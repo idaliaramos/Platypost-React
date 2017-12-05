@@ -10,6 +10,7 @@ function loadStories() {
   require('../src/components/table/History.story.js');
   require('../src/components/postcard/postcard.story.js');
   require('../src/components/mailForms/MailToFromComponent.story.js');
+  require('../src/components/testComponents/testpage.story.js');
 }
 
 configure(loadStories, module);

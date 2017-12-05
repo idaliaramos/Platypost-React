@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import React, { Component } from 'react';
-import AddressFormFieldComponent from './AddressFormFieldComponent';
+import ReceiverAddressComponent from './ReceiverAddressComponent';
 storiesOf('Address', module).add('Onclick change to this', () =>
-  <AddressFormFieldComponent />
+  <ReceiverAddressComponent />
 );

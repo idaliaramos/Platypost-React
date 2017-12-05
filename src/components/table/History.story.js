@@ -1,4 +1,4 @@
 import { storiesOf } from '@storybook/react';
 import React, { Component } from 'react';
-import History from './History';
-storiesOf('History', module).add('One Letter', () => <History />);
+import HistoryPage from './HistoryPage';
+storiesOf('HistoryPage', module).add('One Letter', () => <HistoryPage />);

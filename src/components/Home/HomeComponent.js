@@ -99,7 +99,7 @@ export default class HomeComponent extends Component {
                 style={{ fontSize: '1.7em', fontWeight: 'normal' }}
               />
               <Button color="purple" size="huge">
-                <NavLink color="white" exact to="/mail">
+                <NavLink color="white" exact to="/sendto">
                   Send my PDF!
                 </NavLink>
                 {/* <ReactS3Uploader /> */}

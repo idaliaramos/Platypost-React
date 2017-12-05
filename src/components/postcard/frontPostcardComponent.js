@@ -1,10 +1,15 @@
 import React from 'react';
-import { Image } from 'semantic-ui-react';
+import { Image, Header } from 'semantic-ui-react';
 
-const frontPostcardComponent = () =>
-  <Image
-    src="https://www.ncl.com/sites/default/files/Hawaii.Tip2016_4.jpg"
-    size="large"
-  />;
-
-export default frontPostcardComponent;
+const FrontPostcardComponent = () =>
+  <div>
+    {/* <Header as="h1">Checkout</Header> */}
+    <Header sub textAlign="left">
+      PostCard Preview
+    </Header>
+    <Image
+      src="https://www.ncl.com/sites/default/files/Hawaii.Tip2016_4.jpg"
+      size="big"
+    />;
+  </div>;
+export default FrontPostcardComponent;

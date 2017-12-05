@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 
-import frontPostcardComponent from './frontPostcardComponent.js';
-import backPostcardComponent from './backPostcardComponent.js';
+import FrontPostcardComponent from './FrontPostcardComponent.js';
+import BackPostcardComponent from './BackPostcardComponent.js';
 
 storiesOf('Postcard', module)
-  .add('front image', () => <frontPostcardComponent />)
-  .add('back text', () => <backPostcardComponent />);
+  .add('front image', () => <FrontPostcardComponent />)
+  .add('back text', () => <BackPostcardComponent />);
