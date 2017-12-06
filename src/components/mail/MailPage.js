@@ -5,6 +5,7 @@ import MailPageLayout from './MailPageLayout';
 import NavComponent from '../nav/NavComponent';
 import FrontPostcardComponent from '../postcard/FrontPostcardComponent';
 import BackPostcardComponent from '../postcard/BackPostcardComponent';
+import UploadComponent from '../upload/UploadComponent';
 
 import Checkout from '../../Checkout';
 import TotalComponent from '../TotalComponent';
@@ -15,21 +16,22 @@ import {
   Segment,
   Image,
   Divider,
-  Progress
+  Progress,
+  Button
 } from 'semantic-ui-react';
 export default function MailPage(props) {
+  console.log(props);
   return (
     <div>
       <MailPageLayout>
         <NavComponent />
-        <FrontPostcardComponent />
-        <BackPostcardComponent />
-        <TotalComponent />
-        <Checkout
-          name={'The Road to learn React'}
-          description={'Only the Book'}
-          amount={1}
+        <FrontPostcardComponent url={props.url || {}} />
+        <BackPostcardComponent
+          receiverInfo={props.receiverInfo || {}}
+          senderInfo={props.senderInfo || {}}
         />
+        <TotalComponent />
+        <Checkout name={'Postcard'} description={'postcard'} amount={1.75} />
       </MailPageLayout>
     </div>
   );

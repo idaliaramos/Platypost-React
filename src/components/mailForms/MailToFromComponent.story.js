@@ -4,16 +4,16 @@ import { storiesOf } from '@storybook/react';
 import MailToFromPageLayout from './MailToFromPageLayout';
 import ReceiverAddressComponent from '../ReceiverAddressComponent';
 import NavComponent from '../nav/NavComponent';
-import ReceiverAddressPage from './../mailForms/ReceiverAddressPage';
-import SenderAddressPage from './../mailForms/SenderAddressPage';
+import ReceiverAddressForm from './../mailForms/ReceiverAddressForm';
+import SenderAddressForm from './../mailForms/SenderAddressForm';
 storiesOf('Receiver/Sender Address Page', module)
   .add('Address pages, to and from', () =>
     <div>
-      <ReceiverAddressPage />
+      <ReceiverAddressForm />
     </div>
   )
   .add('SenderPage', () =>
     <div>
-      <SenderAddressPage />
+      <SenderAddressForm />
     </div>
   );

@@ -34,11 +34,11 @@ import HomeComponent from './components/Home/HomeComponent';
 import MailPageContainer from './redux/containers/MailPageContainer';
 import LoginPageContainer from './redux/containers/LoginPageContainer.js';
 import RegisterPageContainer from './redux/containers/RegisterPageContainer.js';
-import ReceiverAddressPage from './components/mailForms/ReceiverAddressPage';
-import SenderAddressPage from './components/mailForms/SenderAddressPage';
+import ReceiverAddressForm from './components/mailForms/ReceiverAddressForm';
+import SenderAddressForm from './components/mailForms/SenderAddressForm';
 // import RegisterPageContainer from './redux/containers/RegisterPageContainer';
 // import ErrorPage from './components/ErrorPage';
-import Process from './components/testComponents/Process';
+import SendPage from './components/testComponents/SendPage';
 import setupStore from './redux/setupStore';
 
 const store = setupStore();
@@ -53,10 +53,10 @@ export default class App extends Component {
             <Switch>
               <Route exact path="/login" component={LoginPageContainer} />
               <Route exact path="/register" component={RegisterPageContainer} />
-              <Route exact path="/process" component={Process} />
+              <Route exact path="/send" component={SendPage} />
               <Route exact path="/" component={HomeComponent} />
-              {/* <Route exact path="/sendto" component={ReceiverAddressPage} />
-              <Route exact path="/from" component={SenderAddressPage} /> */}
+              {/* <Route exact path="/sendto" component={ReceiverAddressForm} />
+              <Route exact path="/from" component={SenderAddressForm} /> */}
               {/* <Route
               exact
               path="/history/:userId"

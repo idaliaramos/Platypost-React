@@ -1,6 +1,6 @@
 import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
-import MailPage from '../../components/mail/MailPage';
+import SendPage from '../../components/testComponents/SendPage';
 //import thunks
 
 function mapStateToProps(state, ownProps) {}
@@ -22,4 +22,4 @@ const onDidMount = lifecycle({
   }
 });
 
-export default compose(connectToStore, onDidMount)(MailPage);
+export default compose(connectToStore, onDidMount)(SendPage);

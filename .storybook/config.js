@@ -11,6 +11,7 @@ function loadStories() {
   require('../src/components/postcard/postcard.story.js');
   require('../src/components/mailForms/MailToFromComponent.story.js');
   require('../src/components/testComponents/testpage.story.js');
+  require('../src/components/upload/UploadComponent.story.js');
 }
 
 configure(loadStories, module);

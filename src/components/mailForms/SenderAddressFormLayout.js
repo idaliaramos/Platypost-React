@@ -36,7 +36,7 @@ import {
   Header,
   Progress
 } from 'semantic-ui-react';
-export default function MailToFromPageLayout(prop) {
+export default function SenderAddressFormLayout(prop) {
   const style = {
     display: 'flex',
     flexDirection: 'row',
@@ -44,17 +44,7 @@ export default function MailToFromPageLayout(prop) {
   };
 
   return (
-    // <div>
-    //   <div style={style}>
-    //     {prop.children[0]}
-    //     {prop.children[1]}
-    //     {prop.children[2]}
-    //     {prop.children[3]}
-    //   </div>
-    // </div>
     <div>
-      {prop.children[0]}
-
       <Divider hidden />
       <Divider hidden />
       <Container>
@@ -64,12 +54,11 @@ export default function MailToFromPageLayout(prop) {
           </Divider>
         </Segment>
         <Progress color="yellow" value="2" total="3" progress="ratio" />
-
-        <Grid centered container>
-          <Grid.Column width={12}>
-            {prop.children[1]}
-          </Grid.Column>
-        </Grid>
+        {/* <Grid centered> */}
+        {/* <Grid.Column width={12}> */}
+        {prop.children[0]}
+        {/* </Grid.Column> */}
+        {/* </Grid> */}
       </Container>
     </div>
   );

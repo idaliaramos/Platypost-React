@@ -16,18 +16,23 @@ import {
   Divider,
   Header
 } from 'semantic-ui-react';
-export default function ReceiverAddressPage(props) {
+export default function ReceiverAddressForm(props) {
   return (
-    <div className="ReceiverAddressPage">
+    <div className="ReceiverAddressForm">
       <MailToFromPageLayout>
         <FrontPostcardComponent />
-        <ReceiverAddressComponent onNext={props.onNext} />
+        <ReceiverAddressComponent
+          onNext={props.onNext}
+          onPrevious={props.onPrevious}
+          onChange={props.onChange}
+          receiverInfo={props.receiverInfo || {}}
+        />
       </MailToFromPageLayout>
     </div>
   );
 }
 //working below
-// const ReceiverAddressPage = () =>
+// const ReceiverAddressForm = () =>
 //   <div>
 //     <NavComponent />
 //     <Divider hidden />
@@ -56,4 +61,4 @@ export default function ReceiverAddressPage(props) {
 //       </Grid>;
 //     </Container>;
 //   </div>;
-// export default ReceiverAddressPage;
+// export default ReceiverAddressForm;

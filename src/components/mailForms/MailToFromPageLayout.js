@@ -17,14 +17,6 @@ export default function MailToFromPageLayout(prop) {
   };
 
   return (
-    // <div>
-    //   <div style={style}>
-    //     {prop.children[0]}
-    //     {prop.children[1]}
-    //     {prop.children[2]}
-    //     {prop.children[3]}
-    //   </div>
-    // </div>
     <div>
       <Divider hidden />
       <Divider hidden />
