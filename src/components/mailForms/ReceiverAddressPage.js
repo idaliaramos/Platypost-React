@@ -1,18 +1,3 @@
-// import React from 'react';
-// import NavComponent from '../nav/NavComponent';
-// import ReceiverAddressComponent from '../ReceiverAddressComponent';
-// import MailToFromPageLayout from './MailToFromPageLayout';
-//
-// export default function ReceiverAddressPage(props) {
-//   return (
-//     <div className="sendToPage">
-//       <NavComponent />
-//       {/* <sentToFromPageLayout {...props}> */}
-//       <ReceiverAddressComponent toAddress={props.toAddress} />
-//       {/* </sentToFromPageLayout> */}
-//     </div>
-//   );
-// }
 import React from 'react';
 
 import ReceiverAddressComponent from '../ReceiverAddressComponent';
@@ -33,11 +18,10 @@ import {
 } from 'semantic-ui-react';
 export default function ReceiverAddressPage(props) {
   return (
-    <div className="sendToPage">
-      <NavComponent />
-      <MailToFromPageLayout {...props}>
+    <div className="ReceiverAddressPage">
+      <MailToFromPageLayout>
         <FrontPostcardComponent />
-        <ReceiverAddressComponent toAddress={props.toAddress} />
+        <ReceiverAddressComponent onNext={props.onNext} />
       </MailToFromPageLayout>
     </div>
   );

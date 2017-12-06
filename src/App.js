@@ -38,7 +38,7 @@ import ReceiverAddressPage from './components/mailForms/ReceiverAddressPage';
 import SenderAddressPage from './components/mailForms/SenderAddressPage';
 // import RegisterPageContainer from './redux/containers/RegisterPageContainer';
 // import ErrorPage from './components/ErrorPage';
-import TestPage from './components/testComponents/TestPage';
+import Process from './components/testComponents/Process';
 import setupStore from './redux/setupStore';
 
 const store = setupStore();
@@ -53,16 +53,16 @@ export default class App extends Component {
             <Switch>
               <Route exact path="/login" component={LoginPageContainer} />
               <Route exact path="/register" component={RegisterPageContainer} />
-              <Route exact path="/mail" component={TestPage} />
+              <Route exact path="/process" component={Process} />
               <Route exact path="/" component={HomeComponent} />
-              <Route exact path="/sendto" component={ReceiverAddressPage} />
-              <Route exact path="/from" component={SenderAddressPage} />
+              {/* <Route exact path="/sendto" component={ReceiverAddressPage} />
+              <Route exact path="/from" component={SenderAddressPage} /> */}
               {/* <Route
               exact
               path="/history/:userId"
               component={HistoryPageContainer}
             /> */}
-              <Route exact path="/mail" component={MailPageContainer} />
+
               {/* <Route
                  render={() => <ErrorPage errorCode="ERROR_NOT_FOUND" />}
                 /> */}
