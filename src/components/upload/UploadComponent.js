@@ -10,12 +10,12 @@ import {
   Progress,
   Button
 } from 'semantic-ui-react';
-import CustomReactS3Uploader from '../../CustomReactS3Uploader';
+import CustomReactS3Uploader from '../CustomReactS3Uploader';
 export default class UploadComponent extends Component {
   static defaultProps = {
     onNext: () => {}
   };
-  // would be better practice to put in the constructor
+  //check, change for it not to be in the state
   constructor(props) {
     super(props);
     this.state = {
@@ -25,7 +25,7 @@ export default class UploadComponent extends Component {
 
   _handleClick = event => {
     event.preventDefault();
-    console.log(this.state, 'this is the state in upload');
+
     const { url } = this.state;
     this.props.onNext({ url: url.trim() });
   };

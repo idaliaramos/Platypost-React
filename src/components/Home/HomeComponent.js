@@ -13,7 +13,7 @@ import {
   Segment,
   Visibility
 } from 'semantic-ui-react';
-import CustomReactS3Uploader from '../../CustomReactS3Uploader';
+import CustomReactS3Uploader from '../CustomReactS3Uploader';
 const FixedMenu = () =>
   <Menu fixed="top" size="large">
     <Container>

@@ -7,7 +7,7 @@ import FrontPostcardComponent from '../postcard/FrontPostcardComponent';
 import BackPostcardComponent from '../postcard/BackPostcardComponent';
 import UploadComponent from '../upload/UploadComponent';
 
-import Checkout from '../../Checkout';
+import Checkout from '../Checkout';
 import TotalComponent from '../TotalComponent';
 import {
   Grid,
@@ -29,9 +29,17 @@ export default function MailPage(props) {
         <BackPostcardComponent
           receiverInfo={props.receiverInfo || {}}
           senderInfo={props.senderInfo || {}}
+          url={props.url || {}}
         />
         <TotalComponent />
-        <Checkout name={'Postcard'} description={'postcard'} amount={1.75} />
+        <Checkout
+          name={'Postcard'}
+          description={'postcard'}
+          amount={1.75}
+          receiverInfo={props.receiverInfo || {}}
+          senderInfo={props.senderInfo || {}}
+          url={props.url || {}}
+        />
       </MailPageLayout>
     </div>
   );

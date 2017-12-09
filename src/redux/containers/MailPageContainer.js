@@ -11,6 +11,10 @@ function mapDispatchToProps(dispatch, ownProps) {
     // (letterData = letterdata => {
     //   // dispatch(createletterThunk(letterData));
     // })
+    //   createMailData: (mailData, userId) => {
+    //   //console.log(tripData, 'hello avery, in the adven page');
+    //   dispatch(createMailThunk(mailData, userId));
+    // }
   };
 }
 

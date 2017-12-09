@@ -33,16 +33,6 @@ export default class SenderAddressComponent extends Component {
 
   _handleClick = event => {
     event.preventDefault();
-    // console.log(this.state, 'this is the state in the senderscomp');
-    // const {
-    //   name,
-    //   address_line1,
-    //   address_line2,
-    //   address_city,
-    //   address_state,
-    //   address_zip
-    // } = this.state;
-
     this.props.onNext();
   };
   render() {

@@ -5,7 +5,7 @@ import MailToFromPageLayout from './MailToFromPageLayout';
 
 import NavComponent from '../nav/NavComponent';
 import FrontPostcardComponent from '../postcard/FrontPostcardComponent';
-import Checkout from '../../Checkout';
+import Checkout from '../Checkout';
 import TotalComponent from '../TotalComponent';
 import {
   Grid,
