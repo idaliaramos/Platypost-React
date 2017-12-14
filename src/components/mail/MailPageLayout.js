@@ -18,19 +18,7 @@ export default function MailPageLayout(props) {
   };
 
   return (
-    // <div>
-    //   {props.children[0]}
-    //   <div style={style}>
-    //     {props.children[1]}
-    //     {props.children[2]}
-    //   </div>
-    //   <div style={style}>
-    //     {props.children[3]}
-    //     {props.children[4]}
-    //   </div>
-    // </div>
     <div>
-      {props.children[0]}
       <Divider hidden />
       <Divider hidden />
       <Container>
@@ -42,15 +30,15 @@ export default function MailPageLayout(props) {
         <Progress color="yellow" percent={100} progress />
         <Grid stackable>
           <Grid.Column width={9}>
+            {props.children[0]}
+            <Divider hidden />
+            <Divider hidden />
             {props.children[1]}
-            <Divider hidden />
-            <Divider hidden />
-            {props.children[2]}
           </Grid.Column>
           <Grid.Column width={6}>
-            {props.children[3]}
+            {props.children[2]}
             <Divider hidden />
-            {props.children[4]}
+            {props.children[3]}
           </Grid.Column>
         </Grid>
       </Container>

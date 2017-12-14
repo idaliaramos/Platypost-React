@@ -24,12 +24,15 @@ export default function MailPage(props) {
   return (
     <div>
       <MailPageLayout>
-        <NavComponent />
-        <FrontPostcardComponent url={props.url || {}} />
+        {/* <NavComponent /> */}
+        <FrontPostcardComponent
+          S3UploadUrl={props.S3UploadUrl}
+          S3UploadPublicPath={props.S3UploadPublicPath}
+        />
         <BackPostcardComponent
           receiverInfo={props.receiverInfo || {}}
           senderInfo={props.senderInfo || {}}
-          url={props.url || {}}
+          // url={props.url || {}}
         />
         <TotalComponent />
         <Checkout

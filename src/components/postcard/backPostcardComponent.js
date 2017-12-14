@@ -4,6 +4,7 @@ import { Grid, Segment, List, Image } from 'semantic-ui-react';
 export default class BackPostcardComponent extends Component {
   render() {
     console.log(this.props, ' this.props');
+    console.log(this.state, 'this state');
     return (
       <Segment>
         <Grid columns={2} divided>

@@ -17,7 +17,7 @@ export default class CustomReactS3Uploader extends Component {
         accept="image/*,application/pdf"
         s3path="/uploads/"
         // preprocess={function(file, func) {
-        //   // debugger;
+        //   console.log(file, 'this is the file');
         // }}
         // onProgress={() => {
         //   // debugger;
@@ -29,6 +29,7 @@ export default class CustomReactS3Uploader extends Component {
         onFinish={(s3data, publicFile) => {
           //on finish send the url to backend to get resized..
           //update state with this url
+          // console.log(s3data, publicFile, 'on finish');
           //TODO:
           this.props.onComplete({
             url: s3data.signedUrl,

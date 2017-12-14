@@ -37,7 +37,57 @@ export default class SendPage extends React.Component {
       case 0:
         return (
           <div>
-            <NavComponent {...this.props} />;
+            <NavComponent {...this.props} />
+            <UploadComponent
+              onNext={this._moveToStep1}
+              onPrevious={this._moveToHome}
+              // url={this.state.url}
+              onComplete={this._s3UploadComplete}
+            />
+          </div>
+        );
+      case 1:
+        return (
+          <div>
+            <NavComponent {...this.props} />
+            <ReceiverAddressForm
+              onNext={this._moveToStep2}
+              onPrevious={this._moveToStart}
+              onChange={this._handleChangeReceiverAddressForm}
+              receiverInfo={this.state.receiverInfo}
+            />
+          </div>
+        );
+      case 2:
+        return (
+          <div>
+            <NavComponent {...this.props} />
+            <SenderAddressForm
+              onNext={this._moveToStep3}
+              onPrevious={this._moveToStep1}
+              onChange={this._handleChangeSenderAddressForm}
+              senderInfo={this.state.senderInfo}
+            />
+          </div>
+        );
+      case 3:
+        return (
+          <div>
+            <NavComponent {...this.props} />
+            <MailPage
+              onNext={this._done}
+              receiverInfo={this.state.receiverInfo}
+              senderInfo={this.state.senderInfo}
+              S3UploadUrl={this.state.S3UploadUrl}
+              S3UploadPublicPath={this.state.S3UploadPublicPath}
+            />
+          </div>
+        );
+      case 0:
+      default:
+        return (
+          <div>
+            <NavComponent {...this.props} />
             <UploadComponent
               onNext={this._moveToStep1}
               onPrevious={this._moveToHome}
@@ -46,57 +96,39 @@ export default class SendPage extends React.Component {
             />
           </div>
         );
-      case 1:
-        return (
-          <ReceiverAddressForm
-            onNext={this._moveToStep2}
-            onPrevious={this._moveToStart}
-            onChange={this._handleChangeReceiverAddressForm}
-            receiverInfo={this.state.receiverInfo}
-          />
-        );
-      case 2:
-        return (
-          <SenderAddressForm
-            onNext={this._moveToStep3}
-            onPrevious={this._moveToStep1}
-            onChange={this._handleChangeSenderAddressForm}
-            senderInfo={this.state.senderInfo}
-          />
-        );
-      case 3:
-        return (
-          <MailPage
-            onNext={this._done}
-            receiverInfo={this.state.receiverInfo}
-            senderInfo={this.state.senderInfo}
-            S3UploadUrl={this.state.S3UploadUrl}
-            S3UploadPublicPath={this.state.S3UploadPublicPath}
-          />
-        );
-      case 0:
-      default:
-        return <UploadComponent onNext={this._moveToStep1} />;
     }
   }
   _moveToHome = () => {
     this.props.history.push('/');
   };
-  _moveToStart = url => {
+  // _moveToStart = url => {
+  //   this.setState({
+  //     step: 0
+  //   });
+  //   console.log(this.state, 'state in send step 0');
+  // };
+  // _moveToStep1 = url => {
+  //   this.setState({
+  //     step: 1,
+  //     url
+  //   });
+  //   console.log(this.state, 'state in send step1');
+  // };
+  _moveToStart = () => {
     this.setState({
       step: 0
     });
     console.log(this.state, 'state in send step 0');
   };
-  _moveToStep1 = url => {
+  _moveToStep1 = () => {
     this.setState({
-      step: 1,
-      url
+      step: 1
     });
     console.log(this.state, 'state in send step1');
   };
 
   _handleChangeReceiverAddressForm = changedReceiverInfo => {
+    console.log(changedReceiverInfo, 'this is the changed receiver info');
     this.setState(currenState => ({
       ...currenState,
       receiverInfo: {
@@ -124,7 +156,7 @@ export default class SendPage extends React.Component {
     this.setState({
       step: 3
     });
-    console.log(this.state, 'state in send page step 3');
+    console.log(this.state, 'state in step 3');
   };
 
   _done = () => {

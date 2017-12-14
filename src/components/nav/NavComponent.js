@@ -11,6 +11,7 @@ export default class NavComponent extends Component {
     };
 
     console.log(this.props, 'props');
+    console.log(this.state, 'state in nav');
   }
 
   // state = { activeItem: 'home' };
