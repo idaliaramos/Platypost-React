@@ -13,8 +13,20 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    login: credentials =>
-      dispatch(LoginThunk.create(credentials, ownProps.history))
+    login: credentials => {
+      dispatch(LoginThunk.create(credentials, ownProps.history));
+      // ownProps.history.push('/send');
+    }
+    // async login(attributes) {
+    //   let correctInput = await dispatch(
+    //     LoginThunk.create(attributes, ownProps.history)
+    //   );
+    //   if (!correctInput) {
+    //     ownProps.history.push('/login');
+    //   } else {
+    //     ownProps.history.push('/destinations');
+    //   }
+    // }
   };
 }
 

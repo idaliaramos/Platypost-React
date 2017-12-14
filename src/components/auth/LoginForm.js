@@ -6,21 +6,48 @@ import {
   Header,
   Image,
   Message,
-  Segment
+  Segment,
+  Visibility
 } from 'semantic-ui-react';
-
+import NavComponent from '../nav/NavComponent';
 export default class LoginForm extends Component {
   static defaultProps = {
-    onSubmit: () => {}
+    onSubmit: () => {},
+    onChange: () => {}
   };
 
-  state = {
-    invalidCredentials: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      invalidCredentials: false,
+      email: '',
+      password: ''
+    };
+  }
+  //
+  // hideFixedMenu = () => this.setState({ visible: false });
+  // showFixedMenu = () => this.setState({ visible: true });
+
+  _handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  _handleSubmit = event => {
+    console.log(this.state, 'this is the state');
+    const { email, password } = this.state;
+    event.preventDefault();
+    this.props.onSubmit({
+      email: email.trim(),
+      password: password.trim()
+    });
   };
 
   render() {
+    // const { visible } = this.state;
+
     return (
       <div className="login-form">
+        {/* {visible ? <NavComponent /> : null} */}
         <style>{`
       body > div,
       body > div > div,
@@ -28,6 +55,10 @@ export default class LoginForm extends Component {
         height: 100%;
       }
     `}</style>
+        {/* <Visibility
+          onBottomPassed={this.showFixedMenu}
+          onBottomVisible={this.hideFixedMenu}
+          once={false}> */}
         <Grid
           textAlign="center"
           style={{ height: '100%' }}
@@ -40,17 +71,25 @@ export default class LoginForm extends Component {
             <Form size="large" onSubmit={this._handleSubmit}>
               <Segment stacked>
                 <Form.Input
+                  required
                   fluid
                   icon="user"
                   iconPosition="left"
                   placeholder="E-mail address"
+                  onChange={this._handleChange}
+                  value={this.state.email.value}
+                  name="email"
                 />
                 <Form.Input
+                  required
                   fluid
                   icon="lock"
                   iconPosition="left"
                   placeholder="Password"
                   type="password"
+                  onChange={this._handleChange}
+                  value={this.state.password.value}
+                  name="password"
                 />
 
                 <Form.Button color="yellow" fluid size="large">
@@ -63,6 +102,7 @@ export default class LoginForm extends Component {
             </Message>
           </Grid.Column>
         </Grid>
+        {/* </Visibility> */}
       </div>
     );
   }

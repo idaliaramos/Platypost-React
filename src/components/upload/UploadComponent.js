@@ -18,16 +18,11 @@ export default class UploadComponent extends Component {
   //check, change for it not to be in the state
   constructor(props) {
     super(props);
-    this.state = {
-      url: ''
-    };
   }
 
   _handleClick = event => {
     event.preventDefault();
-
-    const { url } = this.state;
-    this.props.onNext({ url: url.trim() });
+    this.props.onNext();
   };
   render() {
     return (
@@ -43,7 +38,7 @@ export default class UploadComponent extends Component {
           <Progress color="yellow" value="0" total="3" progress="ratio" />
           <Grid>
             <Grid.Column>
-              <CustomReactS3Uploader />
+              <CustomReactS3Uploader onComplete={this.props.onComplete} />
               <Divider hidden />
               <Divider hidden />
             </Grid.Column>

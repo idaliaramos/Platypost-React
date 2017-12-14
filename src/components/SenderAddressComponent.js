@@ -101,20 +101,21 @@ export default class SenderAddressComponent extends Component {
               onChange={this._handleChange}
             />
           </Form.Group>
-
-          <Form.Button
-            floated="left"
-            basic
-            color="grey"
-            onClick={this._handleClickBack}>
-            Back
-          </Form.Button>
-          <Form.Button
-            floated="left"
-            color="purple"
-            onClick={this._handleClick}>
-            Next
-          </Form.Button>
+          <Form.Group>
+            <Form.Button
+              floated="left"
+              basic
+              color="grey"
+              onClick={this._handleClickBack}>
+              Back
+            </Form.Button>
+            <Form.Button
+              floated="left"
+              color="purple"
+              onClick={this._handleClick}>
+              Next
+            </Form.Button>
+          </Form.Group>
         </Form>
         <Divider hidden />
       </div>

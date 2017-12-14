@@ -6,7 +6,7 @@ import LoginPageLayout from './LoginPageLayout';
 
 export default class RegisterPage extends Component {
   static defaultProps = {
-    login: () => {}
+    registerUser: () => {}
   };
 
   render() {
@@ -14,7 +14,7 @@ export default class RegisterPage extends Component {
       <div className="RegisterPage">
         <LoginPageLayout>
           <NavComponent />
-          <RegisterForm onSubmit={this.props.login} />
+          <RegisterForm onSubmit={this.props.registerUser} />
         </LoginPageLayout>
       </div>
     );

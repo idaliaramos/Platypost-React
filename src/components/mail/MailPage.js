@@ -38,7 +38,8 @@ export default function MailPage(props) {
           amount={1.75}
           receiverInfo={props.receiverInfo || {}}
           senderInfo={props.senderInfo || {}}
-          url={props.url || {}}
+          S3UploadUrl={props.S3UploadUrl}
+          S3UploadPublicPath={props.S3UploadPublicPath}
         />
       </MailPageLayout>
     </div>

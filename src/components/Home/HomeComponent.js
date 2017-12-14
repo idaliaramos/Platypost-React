@@ -13,102 +13,83 @@ import {
   Segment,
   Visibility
 } from 'semantic-ui-react';
-import CustomReactS3Uploader from '../CustomReactS3Uploader';
-const FixedMenu = () =>
-  <Menu fixed="top" size="large">
-    <Container>
-      <Menu.Item as="a" active>
-        Home
-      </Menu.Item>
-      {/* <Menu.Item as="a">Home</Menu.Item>
-      <Menu.Item as="a">Company</Menu.Item>
-      <Menu.Item as="a">Careers</Menu.Item> */}
-      <Menu.Menu position="right">
-        <Menu.Item className="item">
-          <Button as="a">Log in</Button>
-        </Menu.Item>
-        <Menu.Item>
-          <Button as="a" primary>
-            Sign Up
-          </Button>
-        </Menu.Item>
-      </Menu.Menu>
-    </Container>
-  </Menu>;
-
+// const FixedMenu = () =>
+//   <Menu fixed="top" size="large">
+//     <Container>
+//       <Menu.Item as="a" active>
+//         Home
+//       </Menu.Item>
+//       {/* <Menu.Item as="a">Home</Menu.Item>
+//       <Menu.Item as="a">Company</Menu.Item>
+//       <Menu.Item as="a">Careers</Menu.Item> */}
+//       <Menu.Menu position="right">
+//         <Menu.Item className="item">
+//           <Button as="a">Log in</Button>
+//         </Menu.Item>
+//         <Menu.Item>
+//           <Button as="a" primary>
+//             Sign Up
+//           </Button>
+//         </Menu.Item>
+//       </Menu.Menu>
+//     </Container>
+//   </Menu>;
+import NavComponent from '../nav/NavComponent';
 export default class HomeComponent extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      pageName: 'home'
+    };
+  }
 
-  hideFixedMenu = () => this.setState({ visible: false });
-  showFixedMenu = () => this.setState({ visible: true });
+  // hideFixedMenu = () => this.setState({ visible: false });
+  // showFixedMenu = () => this.setState({ visible: true });
 
   render() {
-    const { visible } = this.state;
+    // const { visible } = this.state;
 
     return (
       <div>
-        {visible ? <FixedMenu /> : null}
+        {/* {visible ? <FixedMenu /> : null} */}
 
-        <Visibility
+        {/* <Visibility
           onBottomPassed={this.showFixedMenu}
           onBottomVisible={this.hideFixedMenu}
-          once={false}>
-          <Segment
-            // inverted
-            textAlign="center"
-            style={{ minHeight: 700, padding: '1em 0em' }}
-            vertical>
-            <Container color={'green'}>
-              <Menu pointing secondary size="large">
-                <Menu.Item color={'yellow'} to="/home" active>
-                  <NavLink exact to="/">
-                    Home
-                  </NavLink>
-                </Menu.Item>
-                <Menu.Item position="right">
-                  <Button as="a">
-                    <NavLink exact to="/login">
-                      Login
-                    </NavLink>
-                  </Button>
-                  <Button as="a" color="yellow" style={{ marginLeft: '0.5em' }}>
-                    <NavLink exact to="/register">
-                      Sign Up
-                    </NavLink>
-                  </Button>
-                </Menu.Item>
-              </Menu>
-            </Container>
-
-            <Container text>
-              <Header
-                as="h1"
-                content="Paper Mail without leaving your seat"
-                // inverted
-                style={{
-                  fontSize: '4em',
-                  fontWeight: 'normal',
-                  marginBottom: 0,
-                  marginTop: '3em'
-                }}
-              />
-              <Header
-                as="h2"
-                content="Mail what you want, whenever you want"
-                // inverted
-                style={{ fontSize: '1.7em', fontWeight: 'normal' }}
-              />
-              <Button color="purple" size="huge">
-                <NavLink color="white" exact to="/sendto">
-                  Send my PDF!
-                </NavLink>
-                {/* <ReactS3Uploader /> */}
-                <Icon name="right arrow" />
-              </Button>
-              <CustomReactS3Uploader />
-            </Container>
-          </Segment>
-        </Visibility>
+          once={false}> */}
+        <NavComponent {...this.props} />
+        <Segment
+          // inverted
+          textAlign="center"
+          style={{ minHeight: 700, padding: '1em 0em' }}
+          vertical>
+          <Container text>
+            <Header
+              as="h1"
+              content="Paper Mail without leaving your seat"
+              // inverted
+              style={{
+                fontSize: '4em',
+                fontWeight: 'normal',
+                marginBottom: 0,
+                marginTop: '3em'
+              }}
+            />
+            <Header
+              as="h2"
+              content="Mail what you want, whenever you want"
+              // inverted
+              style={{ fontSize: '1.7em', fontWeight: 'normal' }}
+            />
+            <Button color="purple" size="huge">
+              <NavLink color="white" exact to="/send">
+                Send my PDF!
+              </NavLink>
+              <Icon name="right arrow" />
+            </Button>
+          </Container>
+        </Segment>
+        {/* </Visibility> */}
         <Segment style={{ padding: '0em' }} vertical>
           <Grid celled="internally" columns="equal" stackable>
             <Grid.Row textAlign="center">

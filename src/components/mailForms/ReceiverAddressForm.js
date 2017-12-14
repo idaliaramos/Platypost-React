@@ -31,34 +31,3 @@ export default function ReceiverAddressForm(props) {
     </div>
   );
 }
-//working below
-// const ReceiverAddressForm = () =>
-//   <div>
-//     <NavComponent />
-//     <Divider hidden />
-//     <Divider hidden />
-//     <Container>
-//       <Segment inverted>
-//         <Divider horizontal inverted>
-//           Send To
-//         </Divider>
-//       </Segment>
-//       <Header sub textAlign="left">
-//         PostCard Preview
-//       </Header>
-//       <Grid>
-//         <Grid.Column width={9}>
-//           <Image
-//             src="https://www.ncl.com/sites/default/files/Hawaii.Tip2016_4.jpg"
-//             size="big"
-//           />
-//           <Divider hidden />
-//           <Divider hidden />
-//         </Grid.Column>
-//         <Grid.Column width={6}>
-//           <ReceiverAddressComponent />
-//         </Grid.Column>
-//       </Grid>;
-//     </Container>;
-//   </div>;
-// export default ReceiverAddressForm;
