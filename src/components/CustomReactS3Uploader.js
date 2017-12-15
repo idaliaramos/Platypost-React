@@ -9,6 +9,67 @@ export default class CustomReactS3Uploader extends Component {
   // onNext = url => {
   //   onNext(this.state);
   // };
+  /////////////////////IMAGE PROCESSING ///////////////////////////////////////////
+  _onUploadStart = (file, cb) => {
+    this.props.startImageUpload(file);
+    let fileName = file.name.replace(/\.[^/.]+$/, '');
+    // Load the image
+    let reader = new FileReader();
+    reader.onload = readerEvent => {
+      let image = new Image();
+      image.onload = imageEvent => {
+        // Resize the image
+        let canvas = document.createElement('canvas');
+        let maxSize = 1050;
+        let width = image.width;
+        let height = image.height;
+        if (width > height) {
+          if (width > maxSize) {
+            height *= maxSize / width;
+            width = maxSize;
+          }
+        } else {
+          if (height > maxSize) {
+            width *= maxSize / height;
+            height = maxSize;
+          }
+        }
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+        let dataUrl = canvas.toDataURL('image/jpeg');
+        let resizedImage = this._dataURLToBlob(dataUrl);
+        resizedImage.lastModifiedDate = new Date();
+        resizedImage.name = file.name;
+        cb(resizedImage);
+      };
+      image.src = readerEvent.target.result;
+    };
+    reader.readAsDataURL(file);
+  };
+  _dataURLToBlob = dataURL => {
+    if (typeof window !== 'undefined') {
+      let BASE64_MARKER = ';base64,';
+      if (dataURL.indexOf(BASE64_MARKER) === -1) {
+        let parts = dataURL.split(',');
+        let contentType = parts[0].split(':')[1];
+        let raw = parts[1];
+        return new Blob([raw], { type: contentType });
+      }
+
+      let parts = dataURL.split(BASE64_MARKER);
+      let contentType = parts[0].split(':')[1];
+      let raw = window.atob(parts[1]);
+      let rawLength = raw.length;
+      let uInt8Array = new Uint8Array(rawLength);
+
+      for (var i = 0; i < rawLength; ++i) {
+        uInt8Array[i] = raw.charCodeAt(i);
+      }
+      return new Blob([uInt8Array], { type: contentType });
+    }
+  };
+  ///////////////////////////////END IMAGE PROCESSING//////////////////////////////////////////////////
   render() {
     return (
       <ReactS3Uploader
@@ -16,18 +77,15 @@ export default class CustomReactS3Uploader extends Component {
         signingUrlMethod="GET"
         accept="image/*,application/pdf"
         s3path="/uploads/"
-        // preprocess={(file, func) => {
-        // }}
+        // preprocess={this._onUploadStart}
         onProgress={(a, b, c, d) => {
           this.props.loading();
-          // console.log('++++++ onProgress', a, b, c, d);
         }}
         onError={(a, b, c) => {
           console.log('++++++ onError', arguments);
         }}
         onFinish={(s3data, publicFile) => {
           //on finish send the url to backend to get resized..
-
           //TODO:
           this.props.onComplete({
             url: s3data.signedUrl,
@@ -46,7 +104,7 @@ export default class CustomReactS3Uploader extends Component {
   }
 }
 
-//FUNCTIONAL COMPONENT
+// FUNCTIONAL COMPONENT
 // import React from 'react';
 // import TextField from 'material-ui/TextField';
 // import ReactS3Uploader from 'react-s3-uploader';
@@ -84,10 +142,10 @@ export default class CustomReactS3Uploader extends Component {
 //     scrubFilename={filename => filename.replace(/[^\w\d_\-.]+/gi, '')}
 //     server="https://mailapp-backend-187406.appspot.com"
 //   />;
-//
+
 // export default CustomReactS3Uploader;
 
-//IMAGE UPLOAD TRY
+// IMAGE UPLOAD TRY
 // import React from 'react';
 // import TextField from 'material-ui/TextField';
 // import ReactS3Uploader from 'react-s3-uploader';
@@ -154,32 +212,36 @@ export default class CustomReactS3Uploader extends Component {
 //     return new Blob([uInt8Array], { type: contentType });
 //   }
 // };
-// const CustomReactS3Uploader = () =>
+// const CustomReactS3Uploader = props =>
 //   <ReactS3Uploader
 //     signingUrl="/s3/sign"
 //     signingUrlMethod="GET"
 //     accept="image/*,application/pdf"
 //     s3path="/uploads/"
 //     preprocess={this._onUploadStart}
-//     // onProgress={() => {
-//     //   // debugger;
-//     //   console.log('++++++ onProgress', arguments);
-//     // }}
+//     onProgress={(a, b, c, d) => {
+//       this.props.loading();
+//       // console.log('++++++ onProgress', a, b, c, d);
+//     }}
 //     // onError={(a, b, c) => {
 //     //   console.log('++++++ onError', arguments);
 //     // }}
 //     // onFinish={(s3data, publicFile) => {
-//     //   //on finish send the url to backend to get resized..
-//     //   //send it back to the server
-//     //   console.log('++++++ onFinish', arguments);
-//     // }}
+//     onFinish={(s3data, publicFile) => {
+//       //on finish send the url to backend to get resized..
+//       //TODO:
+//       this.props.onComplete({
+//         url: s3data.signedUrl,
+//         publicPath: s3data.publicUrl
+//       });
+//     }}
 //     // signingUrlHeaders={{ additional: headers }}
 //     // signingUrlQueryParams={{ additional: query - params }}
 //     signingUrlWithCredentials={true} // in case when need to pass authentication credentials via CORS
 //     uploadRequestHeaders={{ 'x-amz-acl': 'public-read' }} // this is the default
 //     contentDisposition="auto"
 //     scrubFilename={filename => filename.replace(/[^\w\d_\-.]+/gi, '')}
-//     server="http://localhost:8080"
+//     server="https://mailapp-backend-187406.appspot.com"
 //     // https://mailapp-backend-187406.appspot.com
 //   />;
 //

@@ -14,7 +14,7 @@ const successPayment = data => {
   // this.props.history.push('/history');
   alert('Payment Successful');
   //modal, redirect
-
+  //set state to show modal
   //TODO:redirect to a success screen
 };
 

@@ -3,24 +3,24 @@ import { connect } from 'react-redux';
 import HistoryPage from '../../components/table/HistoryPage';
 import getHistoryThunk from '../thunks/getHistoryThunk';
 
-function mapStateToProps(state, ownProps) {
-  console.log(state, 'this is the state');
-  return {
-    historyData: state.historyData
-  };
-}
 // function mapStateToProps(state, ownProps) {
 //   console.log(state, 'this is the state');
-//   if (!state) {
-//     return {};
-//   } else {
-//     return {
-//       historyData: state.historyData
-//       // fail: state.fail
-//       //TO:DO help
-//     };
-//   }
-// }
+//   return {
+//     historyData: state.historyData
+//   };
+//}
+function mapStateToProps(state, ownProps) {
+  console.log(state, 'this is the state');
+  if (!state) {
+    return {};
+  } else {
+    return {
+      historyData: state.historyData
+      // fail: state.fail
+      //TO:DO help
+    };
+  }
+}
 
 function mapDispatchToProps(dispatch, ownProps) {
   console.log(ownProps, 'ownprops');
