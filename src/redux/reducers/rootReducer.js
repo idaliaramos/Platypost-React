@@ -1,17 +1,23 @@
 export default function rootReducer(
   currentState = {
-    senderAddress: '',
-    receiverAddress: '',
-    message: '',
-    userHistory: null
+    // senderAddress: '',
+    // receiverAddress: '',
+    // message: '',
+    historyData: []
   },
   action
 ) {
   switch (action.type) {
+    //TODO:help
     case 'GET_HISTORY_COMPLETED':
-      return {
-        ...currentState,
-        history: action.history
-      };
+      const history = currentState.historyData.find(
+        history => history.id === action.history.id
+      );
+      return history
+        ? currentState
+        : {
+            ...currentState,
+            historyData: [...currentState.historyData, action.history]
+          };
   }
 }

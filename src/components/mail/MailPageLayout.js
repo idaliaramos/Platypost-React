@@ -41,6 +41,8 @@ export default function MailPageLayout(props) {
             {props.children[3]}
           </Grid.Column>
         </Grid>
+        <Divider hidden />
+        {props.children[4]}
       </Container>
     </div>
   );

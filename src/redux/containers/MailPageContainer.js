@@ -8,13 +8,6 @@ function mapStateToProps(state, ownProps) {}
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     onMount: () => {}
-    // (letterData = letterdata => {
-    //   // dispatch(createletterThunk(letterData));
-    // })
-    //   createMailData: (mailData, userId) => {
-    //   //console.log(tripData, 'hello avery, in the adven page');
-    //   dispatch(createMailThunk(mailData, userId));
-    // }
   };
 }
 

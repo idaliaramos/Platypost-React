@@ -8,10 +8,12 @@ import MailPage from '../mail/MailPage';
 import HomeComponent from '../Home/HomeComponent';
 import UploadComponent from '../upload/UploadComponent';
 import NavComponent from '../nav/NavComponent';
+import decode from 'jwt-decode';
 
 export default class SendPage extends React.Component {
   static defaultProps = {
     changetoStep3: () => {},
+    changetoStep2: () => {},
     changetoStep1: () => {}
   };
 
@@ -75,11 +77,14 @@ export default class SendPage extends React.Component {
           <div>
             <NavComponent {...this.props} />
             <MailPage
-              onNext={this._done}
+              {...this.props}
+              // onNext={this._done}
               receiverInfo={this.state.receiverInfo}
               senderInfo={this.state.senderInfo}
               S3UploadUrl={this.state.S3UploadUrl}
               S3UploadPublicPath={this.state.S3UploadPublicPath}
+              onPrevious={this._moveToStep2}
+              userId={this.state.userId}
             />
           </div>
         );
@@ -91,7 +96,7 @@ export default class SendPage extends React.Component {
             <UploadComponent
               onNext={this._moveToStep1}
               onPrevious={this._moveToHome}
-              url={this.state.url}
+              // url={this.state.url}
               onComplete={this._s3UploadComplete}
             />
           </div>
@@ -101,30 +106,19 @@ export default class SendPage extends React.Component {
   _moveToHome = () => {
     this.props.history.push('/');
   };
-  // _moveToStart = url => {
-  //   this.setState({
-  //     step: 0
-  //   });
-  //   console.log(this.state, 'state in send step 0');
-  // };
-  // _moveToStep1 = url => {
-  //   this.setState({
-  //     step: 1,
-  //     url
-  //   });
-  //   console.log(this.state, 'state in send step1');
-  // };
   _moveToStart = () => {
     this.setState({
       step: 0
     });
-    console.log(this.state, 'state in send step 0');
   };
   _moveToStep1 = () => {
     this.setState({
       step: 1
     });
-    console.log(this.state, 'state in send step1');
+    var userId = decode(localStorage.token).sub;
+    this.setState({
+      userId: userId
+    });
   };
 
   _handleChangeReceiverAddressForm = changedReceiverInfo => {
@@ -159,9 +153,9 @@ export default class SendPage extends React.Component {
     console.log(this.state, 'state in step 3');
   };
 
-  _done = () => {
-    console.log(this.state, 'final state');
-    console.log('DONE!!!!');
-  };
+  // _done = () => {
+  //   console.log(this.state, 'final state');
+  //   console.log('DONE!!!!');
+  // };
 }
 //should i make differenct function for onPrevious or fine to use changetoStep

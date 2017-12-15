@@ -27,7 +27,8 @@ const onToken = (
   receiverInfo,
   senderInfo,
   S3UploadUrl,
-  S3UploadPublicPath
+  S3UploadPublicPath,
+  userId
 ) => token =>
   axios
     .post(PAYMENT_SERVER_URL, {
@@ -41,7 +42,8 @@ const onToken = (
         receiverInfo,
         senderInfo,
         S3UploadUrl,
-        S3UploadPublicPath
+        S3UploadPublicPath,
+        userId
       }
     })
     .then(successPayment)
@@ -54,7 +56,8 @@ const Checkout = ({
   receiverInfo,
   senderInfo,
   S3UploadUrl,
-  S3UploadPublicPath
+  S3UploadPublicPath,
+  userId
 }) =>
   <StripeCheckout
     name={name}
@@ -66,7 +69,8 @@ const Checkout = ({
       receiverInfo,
       senderInfo,
       S3UploadUrl,
-      S3UploadPublicPath
+      S3UploadPublicPath,
+      userId
     )}
     currency={CURRENCY}
     stripeKey={STRIPE_PUBLISHABLE}

@@ -1,12 +1,10 @@
-import React from 'react';
-
+import React, { Component } from 'react';
 import ReceiverAddressComponent from '../ReceiverAddressComponent';
 import MailPageLayout from './MailPageLayout';
 import NavComponent from '../nav/NavComponent';
 import FrontPostcardComponent from '../postcard/FrontPostcardComponent';
 import BackPostcardComponent from '../postcard/BackPostcardComponent';
 import UploadComponent from '../upload/UploadComponent';
-
 import Checkout from '../Checkout';
 import TotalComponent from '../TotalComponent';
 import {
@@ -19,32 +17,46 @@ import {
   Progress,
   Button
 } from 'semantic-ui-react';
-export default function MailPage(props) {
-  console.log(props);
-  return (
-    <div>
-      <MailPageLayout>
-        {/* <NavComponent /> */}
-        <FrontPostcardComponent
-          S3UploadUrl={props.S3UploadUrl}
-          S3UploadPublicPath={props.S3UploadPublicPath}
-        />
-        <BackPostcardComponent
-          receiverInfo={props.receiverInfo || {}}
-          senderInfo={props.senderInfo || {}}
-          // url={props.url || {}}
-        />
-        <TotalComponent />
-        <Checkout
-          name={'Postcard'}
-          description={'postcard'}
-          amount={1.75}
-          receiverInfo={props.receiverInfo || {}}
-          senderInfo={props.senderInfo || {}}
-          S3UploadUrl={props.S3UploadUrl}
-          S3UploadPublicPath={props.S3UploadPublicPath}
-        />
-      </MailPageLayout>
-    </div>
-  );
+export default class MailPage extends Component {
+  static defaultProps = {
+    onChange: () => {},
+    onNext: () => {},
+    onPrevious: () => {}
+  };
+
+  _handleClickBack = event => {
+    event.preventDefault();
+    this.props.onPrevious();
+  };
+
+  render() {
+    return (
+      <div>
+        <MailPageLayout>
+          <FrontPostcardComponent
+            S3UploadUrl={this.props.S3UploadUrl}
+            S3UploadPublicPath={this.props.S3UploadPublicPath}
+          />
+          <BackPostcardComponent
+            receiverInfo={this.props.receiverInfo || {}}
+            senderInfo={this.props.senderInfo || {}}
+          />
+          <TotalComponent />
+          <Checkout
+            name={'Postcard'}
+            description={'postcard'}
+            amount={1.75}
+            receiverInfo={this.props.receiverInfo || {}}
+            senderInfo={this.props.senderInfo || {}}
+            S3UploadUrl={this.props.S3UploadUrl}
+            S3UploadPublicPath={this.props.S3UploadPublicPath}
+            userId={this.props.userId}
+          />
+          <Button floated="left" onClick={this._handleClickBack}>
+            {' '}Back{' '}
+          </Button>
+        </MailPageLayout>
+      </div>
+    );
+  }
 }
