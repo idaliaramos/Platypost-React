@@ -9,8 +9,6 @@ export default class HistoryPage extends Component {
     super(props);
   }
   render() {
-    console.log(this.props.historyData, 'props logs');
-
     return (
       <div>
         <NavComponent />
@@ -23,7 +21,8 @@ export default class HistoryPage extends Component {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>
-                  {this.props.historyData ? this.props.historyData.to : 'hello'}
+                  {/* {this.props.historyData ? this.props.historyData.to : 'hello'} */}
+                  Expected Delivery Data
                 </Table.HeaderCell>
                 <Table.HeaderCell>To</Table.HeaderCell>
                 <Table.HeaderCell>From</Table.HeaderCell>
@@ -31,37 +30,12 @@ export default class HistoryPage extends Component {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              <Table.Row>
-                <Table.Cell>mail.date</Table.Cell>
-                <Table.Cell>
-                  {/* {this.props.historyData[0]} */}
-                  Idalia Ramos 229 Haight St apt 176 San Francisco CA 94110
-                  mail.receiverAddress
-                </Table.Cell>
-                <Table.Cell>
-                  Galvanize 435 howard st san francicco ca 94101
-                  mail.senderAddress
-                </Table.Cell>
-                <Table.Cell>view postcard (maybe image url? )</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>mail.date</Table.Cell>
-                <Table.Cell>
-                  {/* {this.props.historyData[0]} */}
-                  Idalia Ramos 229 Haight St apt 176 San Francisco CA 94110
-                  mail.receiverAddress
-                </Table.Cell>
-                <Table.Cell>
-                  Galvanize 435 howard st san francicco ca 94101
-                  mail.senderAddress
-                </Table.Cell>
-                <Table.Cell>view postcard (maybe image url? )</Table.Cell>
-              </Table.Row>
-
               {this.props.historyData &&
-                this.props.historyData.map(data =>
-                  <TableRowComponent data={data} key={data.id} />
-                )}
+                this.props.historyData
+                  .reduce(function(a, b) {
+                    return a.concat(b);
+                  }, [])
+                  .map(data => <TableRowComponent data={data} key={data.id} />)}
             </Table.Body>
           </Table>
         </Container>

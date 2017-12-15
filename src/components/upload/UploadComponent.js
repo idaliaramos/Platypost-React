@@ -27,9 +27,6 @@ export default class UploadComponent extends Component {
     this.props.onNext();
   };
   render() {
-    console.log('what is my props-----------', this.props);
-    console.log(this.props.loadingState, 'load state');
-
     return (
       <div>
         <Divider hidden />

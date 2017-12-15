@@ -1,24 +1,37 @@
 import React, { Component } from 'react';
-import { Table, Header, Container, Divider } from 'semantic-ui-react';
+import { Table, Header, Container, Divider, List } from 'semantic-ui-react';
 
 export default class TableRow extends Component {
   render() {
-    const history = this.props.historyData;
+    // const history = this.props.historyData;
     console.log(this.props, 'history');
+    // console.log(history.data, 'history');
     return (
-      <div>
-        <Table.Row>
-          <Table.Cell>mail.date</Table.Cell>
-          <Table.Cell>
-            Idalia Ramos 229 Haight St apt 176 San Francisco CA 94110
-            mail.receiverAddress
-          </Table.Cell>
-          <Table.Cell>
-            Galvanize 435 howard st san francicco ca 94101 mail.senderAddress
-          </Table.Cell>
-          <Table.Cell>view postcard (maybe image url? )</Table.Cell>
-        </Table.Row>
-      </div>
+      <Table.Row>
+        <Table.Cell>
+          {this.props.data.createdAt}
+        </Table.Cell>
+        <Table.Cell>
+          {this.props.data.mailData.to.name}
+          {/* <Divider hidden /> */}
+          {this.props.data.mailData.to.address_line1}
+          {this.props.data.mailData.to.address_city}
+          {this.props.data.mailData.to.address_state}
+          {this.props.data.mailData.to.address_zip}
+        </Table.Cell>
+        <Table.Cell>
+          <List.Item>
+            {this.props.data.mailData.from.name}
+            {this.props.data.mailData.from.address_line1}
+            {this.props.data.mailData.from.address_city}
+            {this.props.data.mailData.from.address_state}
+            {this.props.data.mailData.from.address_zip}
+          </List.Item>
+        </Table.Cell>
+        <Table.Cell>
+          {this.props.data.mailData.tracking_number}
+        </Table.Cell>
+      </Table.Row>
     );
   }
 }

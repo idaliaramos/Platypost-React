@@ -10,8 +10,10 @@ const CURRENCY = 'USD';
 const fromUsdToCent = amount => amount * 100;
 
 const successPayment = data => {
-  console.log(data.data, 'this is the data');
+  console.log(this.props, 'this is the data');
+  // this.props.history.push('/history');
   alert('Payment Successful');
+  //modal, redirect
 
   //TODO:redirect to a success screen
 };

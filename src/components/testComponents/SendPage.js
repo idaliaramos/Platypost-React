@@ -104,7 +104,7 @@ export default class SendPage extends React.Component {
             <UploadComponent
               onNext={this._moveToStep1}
               onPrevious={this._moveToHome}
-              // url={this.state.url}
+              url={this.state.url}
               onComplete={this._s3UploadComplete}
               loading={this._setLoading}
               {...this.props}
@@ -125,14 +125,14 @@ export default class SendPage extends React.Component {
     this.setState({
       step: 1
     });
-    var userId = decode(localStorage.token).sub;
-    this.setState({
-      userId: userId
-    });
+    //why after i set the loading state this broke?
+    // var userId = decode(localStorage.token).sub;
+    // this.setState({
+    //   userId: userId
+    // });
   };
 
   _handleChangeReceiverAddressForm = changedReceiverInfo => {
-    console.log(changedReceiverInfo, 'this is the changed receiver info');
     this.setState(currenState => ({
       ...currenState,
       receiverInfo: {
@@ -149,6 +149,10 @@ export default class SendPage extends React.Component {
         ...changedSenderInfo
       }
     }));
+    var userId = decode(localStorage.token).sub;
+    this.setState({
+      userId: userId
+    });
   };
 
   _moveToStep2 = () => {
