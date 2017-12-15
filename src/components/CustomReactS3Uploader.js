@@ -16,26 +16,23 @@ export default class CustomReactS3Uploader extends Component {
         signingUrlMethod="GET"
         accept="image/*,application/pdf"
         s3path="/uploads/"
-        // preprocess={function(file, func) {
-        //   console.log(file, 'this is the file');
+        // preprocess={(file, func) => {
         // }}
-        // onProgress={() => {
-        //   // debugger;
-        //   console.log('++++++ onProgress', arguments);
-        // }}
-        // onError={(a, b, c) => {
-        //   console.log('++++++ onError', arguments);
-        // }}
+        onProgress={(a, b, c, d) => {
+          this.props.loading();
+          // console.log('++++++ onProgress', a, b, c, d);
+        }}
+        onError={(a, b, c) => {
+          console.log('++++++ onError', arguments);
+        }}
         onFinish={(s3data, publicFile) => {
           //on finish send the url to backend to get resized..
-          //update state with this url
-          // console.log(s3data, publicFile, 'on finish');
+
           //TODO:
           this.props.onComplete({
             url: s3data.signedUrl,
             publicPath: s3data.publicUrl
           });
-          console.log('++++++ onFinish', arguments);
         }}
         // signingUrlHeaders={{ additional: headers }}
         // signingUrlQueryParams={{ additional: query - params }}

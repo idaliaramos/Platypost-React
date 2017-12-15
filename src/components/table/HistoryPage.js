@@ -5,8 +5,12 @@ import NavComponent from '../../components/nav/NavComponent';
 import TableRowComponent from './TableRowComponent';
 
 export default class HistoryPage extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     console.log(this.props.historyData, 'props logs');
+
     return (
       <div>
         <NavComponent />
@@ -18,7 +22,9 @@ export default class HistoryPage extends Component {
           <Table fixed>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Date</Table.HeaderCell>
+                <Table.HeaderCell>
+                  {this.props.historyData ? this.props.historyData.to : 'hello'}
+                </Table.HeaderCell>
                 <Table.HeaderCell>To</Table.HeaderCell>
                 <Table.HeaderCell>From</Table.HeaderCell>
                 <Table.HeaderCell>Postcard Status</Table.HeaderCell>
@@ -51,7 +57,11 @@ export default class HistoryPage extends Component {
                 </Table.Cell>
                 <Table.Cell>view postcard (maybe image url? )</Table.Cell>
               </Table.Row>
-              <TableRowComponent />
+
+              {this.props.historyData &&
+                this.props.historyData.map(data =>
+                  <TableRowComponent data={data} key={data.id} />
+                )}
             </Table.Body>
           </Table>
         </Container>

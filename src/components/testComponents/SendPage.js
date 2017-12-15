@@ -20,18 +20,24 @@ export default class SendPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: 0
+      step: 0,
+      loadingState: false
     };
   }
 
   _s3UploadComplete = data => {
     this.setState({
       S3UploadUrl: data.url,
-      S3UploadPublicPath: data.publicPath
+      S3UploadPublicPath: data.publicPath,
+      step: 1,
+      loadingState: false
     });
+  };
 
-    //ideally you would want the application to move to step1 AFTER the file get uploaded
-    //this._moveToStep1;
+  _setLoading = () => {
+    this.setState({
+      loadingState: true
+    });
   };
 
   render() {
@@ -43,8 +49,10 @@ export default class SendPage extends React.Component {
             <UploadComponent
               onNext={this._moveToStep1}
               onPrevious={this._moveToHome}
-              // url={this.state.url}
               onComplete={this._s3UploadComplete}
+              loading={this._setLoading}
+              loadingState={this.state.loadingState}
+              {...this.props}
             />
           </div>
         );
@@ -98,6 +106,8 @@ export default class SendPage extends React.Component {
               onPrevious={this._moveToHome}
               // url={this.state.url}
               onComplete={this._s3UploadComplete}
+              loading={this._setLoading}
+              {...this.props}
             />
           </div>
         );

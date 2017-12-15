@@ -8,7 +8,9 @@ import {
   Divider,
   Header,
   Progress,
-  Button
+  Button,
+  Dimmer,
+  Loader
 } from 'semantic-ui-react';
 import CustomReactS3Uploader from '../CustomReactS3Uploader';
 export default class UploadComponent extends Component {
@@ -25,6 +27,9 @@ export default class UploadComponent extends Component {
     this.props.onNext();
   };
   render() {
+    console.log('what is my props-----------', this.props);
+    console.log(this.props.loadingState, 'load state');
+
     return (
       <div>
         <Divider hidden />
@@ -38,14 +43,24 @@ export default class UploadComponent extends Component {
           <Progress color="yellow" value="0" total="3" progress="ratio" />
           <Grid>
             <Grid.Column>
-              <CustomReactS3Uploader onComplete={this.props.onComplete} />
+              <CustomReactS3Uploader
+                onComplete={this.props.onComplete}
+                loading={this.props.loading}
+              />
               <Divider hidden />
               <Divider hidden />
             </Grid.Column>
           </Grid>
-          <Button color="purple" onClick={this._handleClick}>
+
+          {this.props.loadingState
+            ? <Dimmer active inverted>
+                <Loader size="large">Loading</Loader>
+              </Dimmer>
+            : null}
+
+          {/* <Button color="purple" onClick={this._handleClick}>
             Next
-          </Button>
+          </Button> */}
         </Container>
       </div>
     );

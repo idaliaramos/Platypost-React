@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import { Table, Header, Container, Divider } from 'semantic-ui-react';
 
 export default class TableRow extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
   render() {
-    // const history = this.props.historyData;
-
+    const history = this.props.historyData;
+    console.log(this.props, 'history');
     return (
       <div>
         <Table.Row>
