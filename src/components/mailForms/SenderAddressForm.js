@@ -31,6 +31,7 @@ export default function SenderAddressForm(props) {
               onPrevious={props.onPrevious}
               onChange={props.onChange}
               senderInfo={props.senderInfo || {}}
+              S3UploadPublicPath={props.S3UploadPublicPath}
             />
           </Grid.Column>
         </Grid>

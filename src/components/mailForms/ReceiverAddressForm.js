@@ -21,7 +21,7 @@ export default function ReceiverAddressForm(props) {
   return (
     <div className="ReceiverAddressForm">
       <MailToFromPageLayout>
-        <FrontPostcardComponent />
+        <FrontPostcardComponent S3UploadPublicPath={props.S3UploadPublicPath} />
         <ReceiverAddressComponent
           onNext={props.onNext}
           onPrevious={props.onPrevious}

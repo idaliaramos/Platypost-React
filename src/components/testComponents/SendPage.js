@@ -65,6 +65,7 @@ export default class SendPage extends React.Component {
               onPrevious={this._moveToStart}
               onChange={this._handleChangeReceiverAddressForm}
               receiverInfo={this.state.receiverInfo}
+              S3UploadPublicPath={this.state.S3UploadPublicPath}
             />
           </div>
         );

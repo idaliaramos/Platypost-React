@@ -30,12 +30,13 @@ export default class MailPage extends Component {
   };
 
   render() {
+    console.log(this.props, 'this props on mail page');
     return (
       <div>
         <MailPageLayout>
           <FrontPostcardComponent
-            S3UploadUrl={this.props.S3UploadUrl}
-            S3UploadPublicPath={this.props.S3UploadPublicPath}
+            S3UploadUrl={this.props.S3UploadUrl || {}}
+            S3UploadPublicPath={this.props.S3UploadPublicPath || {}}
           />
           <BackPostcardComponent
             receiverInfo={this.props.receiverInfo || {}}

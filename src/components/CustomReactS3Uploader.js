@@ -11,7 +11,7 @@ export default class CustomReactS3Uploader extends Component {
   // };
   /////////////////////IMAGE PROCESSING ///////////////////////////////////////////
   _onUploadStart = (file, cb) => {
-    this.props.startImageUpload(file);
+    // this.props.startImageUpload(file);
     let fileName = file.name.replace(/\.[^/.]+$/, '');
     // Load the image
     let reader = new FileReader();
@@ -20,7 +20,7 @@ export default class CustomReactS3Uploader extends Component {
       image.onload = imageEvent => {
         // Resize the image
         let canvas = document.createElement('canvas');
-        let maxSize = 1050;
+        let maxSize = 1875;
         let width = image.width;
         let height = image.height;
         if (width > height) {
@@ -34,8 +34,8 @@ export default class CustomReactS3Uploader extends Component {
             height = maxSize;
           }
         }
-        canvas.width = width;
-        canvas.height = height;
+        canvas.width = 1875; // width;
+        canvas.height = 1275; // height;
         canvas.getContext('2d').drawImage(image, 0, 0, width, height);
         let dataUrl = canvas.toDataURL('image/jpeg');
         let resizedImage = this._dataURLToBlob(dataUrl);
@@ -77,7 +77,7 @@ export default class CustomReactS3Uploader extends Component {
         signingUrlMethod="GET"
         accept="image/*,application/pdf"
         s3path="/uploads/"
-        // preprocess={this._onUploadStart}
+        preprocess={this._onUploadStart}
         onProgress={(a, b, c, d) => {
           this.props.loading();
         }}
@@ -103,48 +103,9 @@ export default class CustomReactS3Uploader extends Component {
     );
   }
 }
-
-// FUNCTIONAL COMPONENT
-// import React from 'react';
-// import TextField from 'material-ui/TextField';
-// import ReactS3Uploader from 'react-s3-uploader';
-// const CustomReactS3Uploader = () =>
-//   <ReactS3Uploader
-//     signingUrl="/s3/sign"
-//     signingUrlMethod="GET"
-//     accept="image/*,application/pdf"
-//     s3path="/uploads/"
-//     // preprocess={function(file, func) {
-//     //   // debugger;
-//     // }}
-//     // onProgress={() => {
-//     //   // debugger;
-//     //   console.log('++++++ onProgress', arguments);
-//     // }}
-//     // onError={(a, b, c) => {
-//     //   console.log('++++++ onError', arguments);
-//     // }}
-//     onFinish={(s3data, publicFile) => {
-//       //on finish send the url to backend to get resized..
-//       //update state with this url
-//       //TODO:
-//       //send it back to the server, capture s3link data
-//       onNext(s3data.signedUrl);
-//       console.log(s3data.signedUrl, 'this should be the url');
-//       console.log(this.state, 'this is the state');
-//       console.log('++++++ onFinish', arguments);
-//     }}
-//     // signingUrlHeaders={{ additional: headers }}
-//     // signingUrlQueryParams={{ additional: query - params }}
-//     signingUrlWithCredentials={true} // in case when need to pass authentication credentials via CORS
-//     uploadRequestHeaders={{ 'x-amz-acl': 'public-read' }} // this is the default
-//     contentDisposition="auto"
-//     scrubFilename={filename => filename.replace(/[^\w\d_\-.]+/gi, '')}
-//     server="https://mailapp-backend-187406.appspot.com"
-//   />;
-
-// export default CustomReactS3Uploader;
-
+// 1275 by 1875
+// 1875 for 6.25 width
+//1275 for 4.25 height
 // IMAGE UPLOAD TRY
 // import React from 'react';
 // import TextField from 'material-ui/TextField';
