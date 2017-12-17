@@ -52,6 +52,7 @@ export default class MailPage extends Component {
             S3UploadUrl={this.props.S3UploadUrl}
             S3UploadPublicPath={this.props.S3UploadPublicPath}
             userId={this.props.userId}
+            onSuccess={this.props.modalOpen}
           />
           <Button floated="left" onClick={this._handleClickBack}>
             {' '}Back{' '}

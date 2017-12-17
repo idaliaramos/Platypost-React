@@ -55,9 +55,9 @@ export default class UploadComponent extends Component {
               </Dimmer>
             : null}
 
-          {/* <Button color="purple" onClick={this._handleClick}>
+          <Button color="purple" onClick={this._handleClick}>
             Next
-          </Button> */}
+          </Button>
         </Container>
       </div>
     );

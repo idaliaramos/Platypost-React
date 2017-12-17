@@ -3,12 +3,6 @@ import { Image, Header } from 'semantic-ui-react';
 
 export default class FrontPostcardComponent extends Component {
   render() {
-    console.log(this.props, ' this.props');
-    console.log(
-      `https://mailapp-backend-187406.appspot.com${this.props
-        .S3UploadPublicPath}`,
-      'this url'
-    );
     return (
       <div>
         {/* <Header as="h1">Checkout</Header> */}

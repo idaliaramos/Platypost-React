@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
-import { Grid, Segment, List, Image } from 'semantic-ui-react';
-//do i have to make this a class component? probably
+import { Grid, Segment, List, Image, Divider } from 'semantic-ui-react';
+// do i have to make this a class component? probably
 export default class BackPostcardComponent extends Component {
   render() {
     console.log(this.props, ' this.props');
     console.log(this.state, 'this state');
     return (
       <Segment>
+        <Image size="big" src="https://s13.postimg.org/ti3x2bshj/hello.png" />
         <Grid columns={2} divided>
           <Grid.Row stretched>
             <Grid.Column>
-              <Segment>
-                {this.props.receiverInfo.message}
-              </Segment>
+              {this.props.receiverInfo.message}
             </Grid.Column>
-
             <Grid.Column>
-              <Image size="tiny" src="http://bit.ly/2AsHCYB" />
+              <Image size="tiny" src="http://bit.ly/2AsHCYB" floated="right" />
+
               <List>
                 <List.Item>
                   {this.props.senderInfo.name}

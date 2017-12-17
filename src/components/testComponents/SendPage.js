@@ -8,6 +8,7 @@ import MailPage from '../mail/MailPage';
 import HomeComponent from '../Home/HomeComponent';
 import UploadComponent from '../upload/UploadComponent';
 import NavComponent from '../nav/NavComponent';
+import responseModal from '../modals/responseModal';
 import decode from 'jwt-decode';
 
 export default class SendPage extends React.Component {
@@ -21,7 +22,8 @@ export default class SendPage extends React.Component {
     super(props);
     this.state = {
       step: 0,
-      loadingState: false
+      loadingState: false,
+      modalOpen: true
     };
   }
 
@@ -33,7 +35,12 @@ export default class SendPage extends React.Component {
       loadingState: false
     });
   };
-
+  _successResponse = () => {
+    console.log('ia m here');
+    this.setState({
+      modalOpen: true
+    });
+  };
   _setLoading = () => {
     this.setState({
       loadingState: true
@@ -41,6 +48,11 @@ export default class SendPage extends React.Component {
   };
 
   render() {
+    <responseModal
+      onSuccess={this._successResponse}
+      modalOpen={this.state.modalOpen}
+      {...this.props}
+    />;
     switch (this.state.step) {
       case 0:
         return (
@@ -102,12 +114,17 @@ export default class SendPage extends React.Component {
         return (
           <div>
             <NavComponent {...this.props} />
-            <UploadComponent
+            {/* <UploadComponent
               onNext={this._moveToStep1}
               onPrevious={this._moveToHome}
               url={this.state.url}
               onComplete={this._s3UploadComplete}
               loading={this._setLoading}
+              {...this.props}
+            /> */}
+            <responseModal
+              onSuccess={this._successResponse}
+              modalOpen={this.state.modalOpen}
               {...this.props}
             />
           </div>
@@ -134,6 +151,9 @@ export default class SendPage extends React.Component {
   };
 
   _handleChangeReceiverAddressForm = changedReceiverInfo => {
+    console.log(changedReceiverInfo, 'this s the info');
+    // console.log(...currenState.receiverInfo, 'current');
+    console.log(this.state, 'this is the state in the rec');
     this.setState(currenState => ({
       ...currenState,
       receiverInfo: {
@@ -141,6 +161,8 @@ export default class SendPage extends React.Component {
         ...changedReceiverInfo
       }
     }));
+    console.log(changedReceiverInfo, 'this s the info2');
+    // console.log(...currenState.receiverInfo, 'current2');
   };
   _handleChangeSenderAddressForm = changedSenderInfo => {
     this.setState(currenState => ({

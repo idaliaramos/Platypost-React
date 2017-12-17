@@ -11,8 +11,9 @@ const fromUsdToCent = amount => amount * 100;
 
 const successPayment = data => {
   console.log(this.props, 'this is the data');
-  // this.props.history.push('/history');
+  // this.props.onSuccess();
   alert('Payment Successful');
+
   //modal, redirect
   //set state to show modal
   //TODO:redirect to a success screen
