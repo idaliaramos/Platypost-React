@@ -1,7 +1,4 @@
 import React from 'react';
-import Component1 from './Component1';
-import Component2 from './Component2';
-import Component3 from './Component3';
 import SenderAddressForm from '../mailForms/SenderAddressForm';
 import ReceiverAddressForm from '../mailForms/ReceiverAddressForm';
 import MailPage from '../mail/MailPage';
@@ -75,8 +72,9 @@ export default class SendPage extends React.Component {
             <ReceiverAddressForm
               onNext={this._moveToStep2}
               onPrevious={this._moveToStart}
-              onChange={this._handleChangeReceiverAddressForm}
+              onChange={this._handleChangeMessageAndReceiverInfo}
               receiverInfo={this.state.receiverInfo}
+              messageInfo={this.state.messageInfo}
               S3UploadPublicPath={this.state.S3UploadPublicPath}
             />
           </div>
@@ -106,6 +104,7 @@ export default class SendPage extends React.Component {
               S3UploadPublicPath={this.state.S3UploadPublicPath}
               onPrevious={this._moveToStep2}
               userId={this.state.userId}
+              messageInfo={this.state.messageInfo}
             />
           </div>
         );
@@ -149,11 +148,13 @@ export default class SendPage extends React.Component {
     //   userId: userId
     // });
   };
+  _handleChangeMessageAndReceiverInfo = data => {
+    this._handleChangeReceiverAddressForm();
+    this._handleChangeMessageInfo();
+  };
 
   _handleChangeReceiverAddressForm = changedReceiverInfo => {
-    console.log(changedReceiverInfo, 'this s the info');
-    // console.log(...currenState.receiverInfo, 'current');
-    console.log(this.state, 'this is the state in the rec');
+    console.log('handleChangeReceiverAddressForm :)');
     this.setState(currenState => ({
       ...currenState,
       receiverInfo: {
@@ -161,8 +162,16 @@ export default class SendPage extends React.Component {
         ...changedReceiverInfo
       }
     }));
-    console.log(changedReceiverInfo, 'this s the info2');
-    // console.log(...currenState.receiverInfo, 'current2');
+  };
+
+  _handleChangeMessageInfo = changedMessageInfo => {
+    this.setState(currenState => ({
+      ...currenState,
+      messageInfo: {
+        ...currenState.messageInfo,
+        ...changedMessageInfo
+      }
+    }));
   };
   _handleChangeSenderAddressForm = changedSenderInfo => {
     this.setState(currenState => ({
@@ -187,7 +196,6 @@ export default class SendPage extends React.Component {
     this.setState({
       step: 3
     });
-    console.log(this.state, 'state in step 3');
   };
 
   // _done = () => {

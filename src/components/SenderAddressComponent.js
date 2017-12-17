@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+// import { Link, NavLink } from 'react-router-dom';
 import {
   Form,
-  Container,
-  Divider,
-  Header,
-  Button,
-  Image,
-  Segment,
-  Progress
+  // Container,
+  Divider
+  // Header,
+  // Button,
+  // Image,
+  // Segment,
+  // Progress
 } from 'semantic-ui-react';
-const sizes = ['small'];
 
 export default class SenderAddressComponent extends Component {
   static defaultProps = {

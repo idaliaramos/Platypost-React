@@ -1,13 +1,13 @@
 import React from 'react';
-import NavComponent from '../nav/NavComponent';
+// import NavComponent from '../nav/NavComponent';
 import SenderAddressComponent from '../SenderAddressComponent';
-import SenderAddressFormLayout from './SenderAddressFormLayout';
+// import SenderAddressFormLayout from './SenderAddressFormLayout';
 import {
-  Form,
+  // Form,
   Container,
-  Header,
+  // Header,
   Divider,
-  Button,
+  // Button,
   Progress,
   Segment,
   Grid

@@ -10,7 +10,6 @@ const CURRENCY = 'USD';
 const fromUsdToCent = amount => amount * 100;
 
 const successPayment = data => {
-  console.log(this.props, 'this is the data');
   // this.props.onSuccess();
   alert('Payment Successful');
 
@@ -31,7 +30,8 @@ const onToken = (
   senderInfo,
   S3UploadUrl,
   S3UploadPublicPath,
-  userId
+  userId,
+  messageInfo
 ) => token =>
   axios
     .post(PAYMENT_SERVER_URL, {
@@ -46,7 +46,8 @@ const onToken = (
         senderInfo,
         S3UploadUrl,
         S3UploadPublicPath,
-        userId
+        userId,
+        messageInfo
       }
     })
     .then(successPayment)
@@ -60,7 +61,8 @@ const Checkout = ({
   senderInfo,
   S3UploadUrl,
   S3UploadPublicPath,
-  userId
+  userId,
+  messageInfo
 }) =>
   <StripeCheckout
     name={name}
@@ -73,7 +75,8 @@ const Checkout = ({
       senderInfo,
       S3UploadUrl,
       S3UploadPublicPath,
-      userId
+      userId,
+      messageInfo
     )}
     currency={CURRENCY}
     stripeKey={STRIPE_PUBLISHABLE}

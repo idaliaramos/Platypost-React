@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
-import ReceiverAddressComponent from '../ReceiverAddressComponent';
+// import ReceiverAddressComponent from '../ReceiverAddressComponent';
 import MailPageLayout from './MailPageLayout';
-import NavComponent from '../nav/NavComponent';
+// import NavComponent from '../nav/NavComponent';
 import FrontPostcardComponent from '../postcard/FrontPostcardComponent';
 import BackPostcardComponent from '../postcard/BackPostcardComponent';
-import UploadComponent from '../upload/UploadComponent';
+// import UploadComponent from '../upload/UploadComponent';
 import Checkout from '../Checkout';
 import TotalComponent from '../TotalComponent';
 import {
-  Grid,
-  Container,
-  Table,
-  Segment,
-  Image,
-  Divider,
-  Progress,
+  // Container,
+  // Table,
+  // Segment,
+  // Image,
+  // Divider,
+  // Progress,
   Button
 } from 'semantic-ui-react';
 export default class MailPage extends Component {
@@ -41,6 +40,7 @@ export default class MailPage extends Component {
           <BackPostcardComponent
             receiverInfo={this.props.receiverInfo || {}}
             senderInfo={this.props.senderInfo || {}}
+            messageInfo={this.props.messageInfo}
           />
           <TotalComponent />
           <Checkout
@@ -53,6 +53,7 @@ export default class MailPage extends Component {
             S3UploadPublicPath={this.props.S3UploadPublicPath}
             userId={this.props.userId}
             onSuccess={this.props.modalOpen}
+            messageInfo={this.props.messageInfo}
           />
           <Button floated="left" onClick={this._handleClickBack}>
             {' '}Back{' '}

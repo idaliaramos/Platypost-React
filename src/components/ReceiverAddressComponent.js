@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+// import { Link, NavLink } from 'react-router-dom';
 import {
   Form,
-  Container,
-  Divider,
-  Header,
-  Button,
-  Image,
-  Segment,
-  Progress
+  // Container,
+  Divider
+  // Header,
+  // Button,
+  // Image,
+  // Segment,
+  // Progress
 } from 'semantic-ui-react';
 const sizes = ['small'];
 
@@ -25,7 +25,14 @@ export default class ReceiverAddressComponent extends Component {
   }
 
   _handleChange = event => {
-    this.props.receiverInfo[event.target.name] = event.target.value;
+    if (event.target.name === 'message') {
+      console.log('i am the message');
+      this.props.messageInfo[event.target.name] = event.target.value;
+    }
+    if (event.target.name !== 'message') {
+      console.log('i am the receiverInfo');
+      this.props.receiverInfo[event.target.name] = event.target.value;
+    }
     this.props.onChange({
       [event.target.name]: event.target.value
     });
@@ -37,6 +44,7 @@ export default class ReceiverAddressComponent extends Component {
   };
 
   _handleClick = event => {
+    console.log(this.props.receiverInfo.address_line1, 'is  this true?');
     event.preventDefault();
     if (
       this.props.receiverInfo.address_line1 &&
@@ -44,6 +52,7 @@ export default class ReceiverAddressComponent extends Component {
       this.props.receiverInfo.address_zip &&
       this.props.receiverInfo.address_city
     ) {
+      console.log('in the click2');
       this.props.onNext();
     } else {
       this.setState({

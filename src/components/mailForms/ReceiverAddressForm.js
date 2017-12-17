@@ -27,6 +27,7 @@ export default function ReceiverAddressForm(props) {
           onPrevious={props.onPrevious}
           onChange={props.onChange}
           receiverInfo={props.receiverInfo || {}}
+          messageInfo={props.messageInfo || {}}
         />
       </MailToFromPageLayout>
     </div>

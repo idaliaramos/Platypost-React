@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import {
   Button,
   Container,
@@ -7,11 +7,11 @@ import {
   Grid,
   Header,
   Icon,
-  Image,
+  // Image,
   List,
-  Menu,
-  Segment,
-  Visibility
+  // Menu,
+  Segment
+  // Visibility
 } from 'semantic-ui-react';
 // const FixedMenu = () =>
 //   <Menu fixed="top" size="large">
