@@ -11,7 +11,7 @@ export default class BackPostcardComponent extends Component {
         <Grid columns={2} divided>
           <Grid.Row stretched>
             <Grid.Column>
-              {this.props.receiverInfo.message}
+              {this.props.messageInfo.message}
             </Grid.Column>
             <Grid.Column>
               <Image size="tiny" src="http://bit.ly/2AsHCYB" floated="right" />

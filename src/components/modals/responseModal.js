@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { Button, Header, Icon, Modal, Image } from 'semantic-ui-react';
 
-export default class responseModal extends Component {
-  state = { modalOpen: false };
+export default class ResponseModal extends Component {
+  // state = { modalOpen: true };
 
   render() {
     return (
       <Modal
-        trigger={this.props.modalOpen}
-        open={this.state.modalOpen}
-        onClose={this.handleClose}
+        // trigger={this.props.modalOpen}
+        open={this.props.modalOpen}
+        onClose={this.props.closeModal}
+        // open={this.state.modalOpen}
+        // onClose={this.handleClose}
         basic
         size="small">
         <Header icon="browser" content="Postcard Sent!" />
@@ -17,6 +19,7 @@ export default class responseModal extends Component {
           <Image
             wrapped
             size="medium"
+            alt="postcard"
             src="/assets/images/avatar/large/rachel.png"
           />
           <Modal.Description>
@@ -24,6 +27,11 @@ export default class responseModal extends Component {
             <p>You can view shipping notifications under history</p>
           </Modal.Description>
         </Modal.Content>
+        <Modal.Actions>
+          <Button color="green" onClick={this.props.closeModal} inverted>
+            <Icon name="checkmark" /> Got it
+          </Button>
+        </Modal.Actions>
       </Modal>
     );
   }

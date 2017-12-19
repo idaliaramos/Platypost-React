@@ -79,7 +79,6 @@ To:
               value={this.props.receiverInfo.name}
               onChange={this._handleChange}
             />
-            {/* <Form.Input label="Company" placeholder="Optional" width={6} /> */}
           </Form.Group>
           <Form.Group>
             <Form.Input

@@ -5,7 +5,7 @@ import MailPage from '../mail/MailPage';
 import HomeComponent from '../Home/HomeComponent';
 import UploadComponent from '../upload/UploadComponent';
 import NavComponent from '../nav/NavComponent';
-import responseModal from '../modals/responseModal';
+import ResponseModal from '../modals/ResponseModal';
 import decode from 'jwt-decode';
 
 export default class SendPage extends React.Component {
@@ -20,7 +20,7 @@ export default class SendPage extends React.Component {
     this.state = {
       step: 0,
       loadingState: false,
-      modalOpen: true
+      modalOpen: false
     };
   }
 
@@ -33,9 +33,16 @@ export default class SendPage extends React.Component {
     });
   };
   _successResponse = () => {
-    console.log('ia m here');
     this.setState({
       modalOpen: true
+    });
+  };
+  //   console.log('ia m here');
+  // };
+
+  _closeModal = () => {
+    this.setState({
+      modalOpen: false
     });
   };
   _setLoading = () => {
@@ -45,11 +52,6 @@ export default class SendPage extends React.Component {
   };
 
   render() {
-    <responseModal
-      onSuccess={this._successResponse}
-      modalOpen={this.state.modalOpen}
-      {...this.props}
-    />;
     switch (this.state.step) {
       case 0:
         return (
@@ -99,12 +101,20 @@ export default class SendPage extends React.Component {
               {...this.props}
               // onNext={this._done}
               receiverInfo={this.state.receiverInfo}
+              messageInfo={this.state.messageInfo}
               senderInfo={this.state.senderInfo}
               S3UploadUrl={this.state.S3UploadUrl}
               S3UploadPublicPath={this.state.S3UploadPublicPath}
               onPrevious={this._moveToStep2}
               userId={this.state.userId}
-              messageInfo={this.state.messageInfo}
+              toggleResponseModal={this._successResponse}
+              // onSuccess={this._successResponse}
+            />
+            <ResponseModal
+              modalOpen={this.state.modalOpen}
+              closeModal={this._closeModal}
+              // onSuccess={this._successResponse}
+              // {...this.props}
             />
           </div>
         );
@@ -121,11 +131,11 @@ export default class SendPage extends React.Component {
               loading={this._setLoading}
               {...this.props}
             /> */}
-            <responseModal
+            {/* <ResponseModal
               onSuccess={this._successResponse}
               modalOpen={this.state.modalOpen}
               {...this.props}
-            />
+            /> */}
           </div>
         );
     }

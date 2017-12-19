@@ -20,7 +20,8 @@ export default class MailPage extends Component {
   static defaultProps = {
     onChange: () => {},
     onNext: () => {},
-    onPrevious: () => {}
+    onPrevious: () => {},
+    onSuccess: () => {}
   };
 
   _handleClickBack = event => {
@@ -52,7 +53,7 @@ export default class MailPage extends Component {
             S3UploadUrl={this.props.S3UploadUrl}
             S3UploadPublicPath={this.props.S3UploadPublicPath}
             userId={this.props.userId}
-            onSuccess={this.props.modalOpen}
+            toggleResponseModal={this.props.toggleResponseModal}
             messageInfo={this.props.messageInfo}
           />
           <Button floated="left" onClick={this._handleClickBack}>
