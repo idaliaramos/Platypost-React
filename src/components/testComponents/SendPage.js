@@ -20,7 +20,8 @@ export default class SendPage extends React.Component {
     this.state = {
       step: 0,
       loadingState: false,
-      modalOpen: false
+      modalOpen: false,
+      successModal: false
     };
   }
 
@@ -32,13 +33,15 @@ export default class SendPage extends React.Component {
       loadingState: false
     });
   };
-  _successResponse = () => {
+  _successResponse = boolean => {
+    if (boolean) {
+      this.setState({ successModal: true });
+    }
     this.setState({
       modalOpen: true
     });
+    console.log('ia m here');
   };
-  //   console.log('ia m here');
-  // };
 
   _closeModal = () => {
     this.setState({
@@ -111,8 +114,10 @@ export default class SendPage extends React.Component {
               // onSuccess={this._successResponse}
             />
             <ResponseModal
+              S3UploadPublicPath={this.state.S3UploadPublicPath}
               modalOpen={this.state.modalOpen}
               closeModal={this._closeModal}
+              successModal={this.state.successModal}
               // onSuccess={this._successResponse}
               // {...this.props}
             />

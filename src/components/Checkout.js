@@ -6,50 +6,11 @@ import STRIPE_PUBLISHABLE from '../constants/stripe';
 import PAYMENT_SERVER_URL from '../constants/server';
 
 const CURRENCY = 'USD';
-
-// const fromUsdToCent = amount => amount * 100;
-// const onToken = (
-//   amount,
-//   description,
-//   receiverInfo,
-//   senderInfo,
-//   S3UploadUrl,
-//   S3UploadPublicPath,
-//   userId,
-//   messageInfo,
-// ) => token =>
-//   axios
-//     .post(PAYMENT_SERVER_URL, {
-//       paymentInfo: {
-//         description,
-//         source: token.id,
-//         currency: CURRENCY,
-//         amount: fromUsdToCent(amount)
-//       },
-//       mailInfo: {
-//         receiverInfo,
-//         senderInfo,
-//         S3UploadUrl,
-//         S3UploadPublicPath,
-//         userId,
-//         messageInfo
-//       }
-//     })
-//     .then(successPayment)
-//     .catch(errorPayment);
-//
-
-//
-// const errorPayment = data => {
-//   console.log(data, 'data in error');
-//   alert('Payment Error');
-// };
-
 export default class Checkout extends Component {
   fromUsdToCent = amount => amount * 100;
   successPayment = data => {
     //pseuydo code this.props.toggleResponseModal(true);
-    this.props.toggleResponseModal();
+    this.props.toggleResponseModal(true);
     // console.log(this.props, 'props on success');
     // console.log(props);
     // toggleResponseModal();
@@ -66,6 +27,7 @@ export default class Checkout extends Component {
   };
 
   errorPayment = data => {
+    this.props.toggleResponseModal(false);
     console.log(data, 'data in error');
     alert('Payment Error');
   };
