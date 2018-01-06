@@ -47,29 +47,3 @@ export default function MailPageLayout(props) {
     </div>
   );
 }
-// const MailPage = () =>
-//   <div>
-//     <NavComponent />
-//     <Divider hidden />
-//     <Divider hidden />
-//     <Container>
-//       <Segment inverted>
-//         <Divider horizontal inverted>
-//           Checkout
-//         </Divider>
-//       </Segment>
-//       <Grid>
-//         <Grid.Column width={9}>
-//           <FrontPostcardComponent />
-//           <Divider hidden />
-//           <Divider hidden />
-//           <BackPostcardComponent />
-//         </Grid.Column>
-//         <Grid.Column width={6}>
-//           <TotalComponent width={6} />
-//           <Checkout />
-//         </Grid.Column>
-//       </Grid>
-//     </Container>
-//   </div>;
-// export default MailPage;

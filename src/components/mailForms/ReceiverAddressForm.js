@@ -17,7 +17,6 @@ import {
   Header
 } from 'semantic-ui-react';
 export default function ReceiverAddressForm(props) {
-  // console.log(this.props, 'this props rec add form');
   return (
     <div className="ReceiverAddressForm">
       <MailToFromPageLayout>

@@ -12,10 +12,8 @@ export default class LoginPage extends Component {
   render() {
     return (
       <div className="LoginPage">
-        <LoginPageLayout>
-          <NavComponent />
-          <LoginForm onSubmit={this.props.login} />
-        </LoginPageLayout>
+        <NavComponent />
+        <LoginForm onSubmit={this.props.login} />
       </div>
     );
   }

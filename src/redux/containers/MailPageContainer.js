@@ -1,7 +1,6 @@
 import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 import SendPage from '../../components/testComponents/SendPage';
-//import thunks
 
 function mapStateToProps(state, ownProps) {}
 

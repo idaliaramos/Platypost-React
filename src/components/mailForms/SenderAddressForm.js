@@ -1,17 +1,8 @@
 import React from 'react';
-// import NavComponent from '../nav/NavComponent';
+
 import SenderAddressComponent from '../SenderAddressComponent';
-// import SenderAddressFormLayout from './SenderAddressFormLayout';
-import {
-  // Form,
-  Container,
-  // Header,
-  Divider,
-  // Button,
-  Progress,
-  Segment,
-  Grid
-} from 'semantic-ui-react';
+
+import { Container, Divider, Progress, Segment, Grid } from 'semantic-ui-react';
 export default function SenderAddressForm(props) {
   return (
     <div>

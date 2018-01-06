@@ -101,9 +101,9 @@ export default class RegisterForm extends Component {
                 </Form.Button>
               </Segment>
             </Form>
-            <Message>
+            {/* <Message>
               New to us? <a href="#">Sign Up</a>
-            </Message>
+            </Message> */}
           </Grid.Column>
         </Grid>
       </div>

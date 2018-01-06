@@ -40,7 +40,6 @@ export default class SendPage extends React.Component {
     this.setState({
       modalOpen: true
     });
-    console.log('ia m here');
   };
 
   _closeModal = () => {
@@ -111,7 +110,6 @@ export default class SendPage extends React.Component {
               onPrevious={this._moveToStep2}
               userId={this.state.userId}
               toggleResponseModal={this._successResponse}
-              // onSuccess={this._successResponse}
             />
             <ResponseModal
               S3UploadPublicPath={this.state.S3UploadPublicPath}
@@ -128,19 +126,14 @@ export default class SendPage extends React.Component {
         return (
           <div>
             <NavComponent {...this.props} />
-            {/* <UploadComponent
+            <UploadComponent
               onNext={this._moveToStep1}
               onPrevious={this._moveToHome}
-              url={this.state.url}
               onComplete={this._s3UploadComplete}
               loading={this._setLoading}
+              loadingState={this.state.loadingState}
               {...this.props}
-            /> */}
-            {/* <ResponseModal
-              onSuccess={this._successResponse}
-              modalOpen={this.state.modalOpen}
-              {...this.props}
-            /> */}
+            />
           </div>
         );
     }

@@ -1,10 +1,8 @@
 import env from '../env';
 
 export default async function authenticate(credentials) {
-  console.log(credentials, 'url');
   try {
-    // const response = await fetch(`${env.API_BASE_URL}/users`, {
-    const response = await fetch('http://localhost:8080/authenticate', {
+    const response = await fetch(`${env.API_BASE_URL}/authenticate`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -16,7 +14,7 @@ export default async function authenticate(credentials) {
     return body;
   } catch (error) {
     if (error.message.startsWith('AuthenticationService.ERROR_'))
-      // ownprops.history.push('/login');
+      // ownProps.history.push('/login');
       //update state with errors to display user as why they arent able to log in
       throw error;
     throw new Error('AuthenticationService.ERROR_UNEXPECTED');

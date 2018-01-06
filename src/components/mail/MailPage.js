@@ -7,15 +7,7 @@ import BackPostcardComponent from '../postcard/BackPostcardComponent';
 // import UploadComponent from '../upload/UploadComponent';
 import Checkout from '../Checkout';
 import TotalComponent from '../TotalComponent';
-import {
-  // Container,
-  // Table,
-  // Segment,
-  // Image,
-  // Divider,
-  // Progress,
-  Button
-} from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 export default class MailPage extends Component {
   static defaultProps = {
     onChange: () => {},

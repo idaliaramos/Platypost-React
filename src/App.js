@@ -10,7 +10,6 @@ import ReceiverAddressForm from './components/mailForms/ReceiverAddressForm';
 import SenderAddressForm from './components/mailForms/SenderAddressForm';
 import HistoryPage from './components/table/HistoryPage';
 import HistoryPageContainer from './redux/containers/HistoryPageContainer';
-// import RegisterPageContainer from './redux/containers/RegisterPageContainer';
 // import ErrorPage from './components/ErrorPage';
 import SendPage from './components/testComponents/SendPage';
 import setupStore from './redux/setupStore';

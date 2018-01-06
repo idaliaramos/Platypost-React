@@ -21,20 +21,20 @@ export default class ResponseModal extends Component {
       <Modal
         open={this.props.modalOpen}
         onClose={this.props.closeModal}
-        basic
+        // basic
         size="small">
         <Header icon="browser" content={data.headerContent} />
         {/* <Header icon="browser" content=data.headercontent/> */}
         <Modal.Content image>
           <Image wrapped size="medium" alt="postcard" src={data.imageSrc} />
           <Modal.Description>
-            <Header>Default Profile Image</Header>
+            <Header>POSTCARD SENT!</Header>
             {data.text}
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
           <Button color="green" onClick={this.props.closeModal} inverted>
-            <Icon name="checkmark" /> {data.iconText}
+            <Icon name="checkmark" href="/history" /> {data.iconText}
           </Button>
         </Modal.Actions>
       </Modal>

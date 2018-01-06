@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Grid, Segment, List, Image, Divider } from 'semantic-ui-react';
-// do i have to make this a class component? probably
 export default class BackPostcardComponent extends Component {
   render() {
     console.log(this.props, ' this.props');

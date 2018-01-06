@@ -17,6 +17,7 @@ function mapDispatchToProps(dispatch, ownProps) {
       dispatch(LoginThunk.create(credentials, ownProps.history));
       // ownProps.history.push('/send');
     }
+    //TODO:
     // async login(attributes) {
     //   let correctInput = await dispatch(
     //     LoginThunk.create(attributes, ownProps.history)

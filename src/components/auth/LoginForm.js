@@ -24,9 +24,6 @@ export default class LoginForm extends Component {
       password: ''
     };
   }
-  //
-  // hideFixedMenu = () => this.setState({ visible: false });
-  // showFixedMenu = () => this.setState({ visible: true });
 
   _handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -43,11 +40,8 @@ export default class LoginForm extends Component {
   };
 
   render() {
-    // const { visible } = this.state;
-
     return (
       <div className="login-form">
-        {/* {visible ? <NavComponent /> : null} */}
         <style>{`
       body > div,
       body > div > div,
@@ -55,10 +49,6 @@ export default class LoginForm extends Component {
         height: 100%;
       }
     `}</style>
-        {/* <Visibility
-          onBottomPassed={this.showFixedMenu}
-          onBottomVisible={this.hideFixedMenu}
-          once={false}> */}
         <Grid
           textAlign="center"
           style={{ height: '100%' }}
@@ -97,12 +87,11 @@ export default class LoginForm extends Component {
                 </Form.Button>
               </Segment>
             </Form>
-            <Message>
+            {/* <Message>
               New to us? <a href="#">Sign Up</a>
-            </Message>
+            </Message> */}
           </Grid.Column>
         </Grid>
-        {/* </Visibility> */}
       </div>
     );
   }

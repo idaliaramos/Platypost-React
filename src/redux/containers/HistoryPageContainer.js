@@ -8,7 +8,7 @@ import getHistoryThunk from '../thunks/getHistoryThunk';
 //   return {
 //     historyData: state.historyData
 //   };
-//}
+// }
 function mapStateToProps(state, ownProps) {
   console.log(state, 'this is the state');
   if (!state) {
@@ -26,7 +26,6 @@ function mapDispatchToProps(dispatch, ownProps) {
   console.log(ownProps, 'ownprops');
   return {
     onMount: () => dispatch(getHistoryThunk(ownProps))
-    //maybe not on mount, need t pass the id
   };
 }
 const connectToStore = connect(mapStateToProps, mapDispatchToProps);

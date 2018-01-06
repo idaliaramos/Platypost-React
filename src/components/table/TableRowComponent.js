@@ -3,9 +3,6 @@ import { Table, Header, Container, Divider, List } from 'semantic-ui-react';
 
 export default class TableRow extends Component {
   render() {
-    // const history = this.props.historyData;
-    console.log(this.props, 'history');
-    // console.log(history.data, 'history');
     return (
       <Table.Row>
         <Table.Cell>

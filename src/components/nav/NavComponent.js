@@ -41,15 +41,14 @@ export default class NavComponent extends Component {
       <div>
         <Menu size="large" pointing color="purple" secondary>
           <Container>
+            <Menu.Item header name="PLATYPOST" />
             <Menu.Item
               name="home"
               active={activeItem === 'home'}
               href="/"
               onClick={this.handleItemClick}
             />
-            <Menu.Item>
-              <Image size="large" src="src/components/nav/narmail.png" />
-            </Menu.Item>
+
             <Menu.Menu position="right">
               <Menu.Item
                 name="history"
@@ -75,15 +74,14 @@ export default class NavComponent extends Component {
       <div>
         <Menu size="large" pointing color="purple" secondary>
           <Container>
+            <Menu.Item header name="PLATYPOST" />
             <Menu.Item
               name="home"
               active={activeItem === 'home'}
               href="/"
               onClick={this.handleItemClick}
             />
-            <Menu.Item>
-              <Image size="large" src="src/components/nav/narmail.png" />
-            </Menu.Item>
+
             <Menu.Menu position="right">
               <Menu.Item
                 name="login"

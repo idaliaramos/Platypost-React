@@ -12,10 +12,8 @@ export default class RegisterPage extends Component {
   render() {
     return (
       <div className="RegisterPage">
-        <LoginPageLayout>
-          <NavComponent />
-          <RegisterForm onSubmit={this.props.registerUser} />
-        </LoginPageLayout>
+        <NavComponent />
+        <RegisterForm onSubmit={this.props.registerUser} />
       </div>
     );
   }
