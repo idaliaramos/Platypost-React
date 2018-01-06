@@ -98,7 +98,8 @@ export default class CustomReactS3Uploader extends Component {
         uploadRequestHeaders={{ 'x-amz-acl': 'public-read' }} // this is the default
         contentDisposition="auto"
         scrubFilename={filename => filename.replace(/[^\w\d_\-.]+/gi, '')}
-        server="https://mailapp-backend-187406.appspot.com"
+        server="http://platypost110017-env.us-west-1.elasticbeanstalk.com"
+        //urlchange
       />
     );
   }
