@@ -9,29 +9,14 @@ const CURRENCY = 'USD';
 export default class Checkout extends Component {
   fromUsdToCent = amount => amount * 100;
   successPayment = data => {
-    //pseuydo code this.props.toggleResponseModal(true);
     this.props.toggleResponseModal(true);
-    // console.log(this.props, 'props on success');
-    // console.log(props);
-    // toggleResponseModal();
-    // console.log(
-    //   this.props.toggleResponseModal,
-    //   '<<<<<<<<<<<<<<<<<<< fn definition'
-    // );
-    // props.onSuccess();
-    // alert('Payment Successful');
-
-    //modal, redirect
-    //set state to show modal
-    //TODO:redirect to a success screen
   };
 
   errorPayment = data => {
     this.props.toggleResponseModal(false);
-    console.log(data, 'data in error');
-    alert('Payment Error');
   };
-
+  //OnToken makes a call to the backend with all of the information needed to authorize a payment and
+  //and the information needed for the LOB API
   onToken = (
     amount,
     description,

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Grid, Segment, List, Image, Divider } from 'semantic-ui-react';
 export default class BackPostcardComponent extends Component {
   render() {
-    console.log(this.props, ' this.props');
-    console.log(this.state, 'this state');
     return (
       <Segment>
         <Image size="big" src="https://s13.postimg.org/ti3x2bshj/hello.png" />

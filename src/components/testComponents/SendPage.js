@@ -101,7 +101,6 @@ export default class SendPage extends React.Component {
             <NavComponent {...this.props} />
             <MailPage
               {...this.props}
-              // onNext={this._done}
               receiverInfo={this.state.receiverInfo}
               messageInfo={this.state.messageInfo}
               senderInfo={this.state.senderInfo}
@@ -189,6 +188,8 @@ export default class SendPage extends React.Component {
         ...changedSenderInfo
       }
     }));
+
+    //Get user Id from local storage in order to access their history bu userID
     var userId = decode(localStorage.token).sub;
     this.setState({
       userId: userId
